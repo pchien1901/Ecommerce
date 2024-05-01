@@ -12,13 +12,32 @@ const generateAccessToken = (userId, role) => {
     return jwt.sign(
       {_id: userId, role},
       process.env.JWT_SECRET, 
-      { expiresIn: '3d'}
+      { expiresIn: '10m'}
       );
   } catch (error) {
     console.error("Đã có lỗi: ", error);
   }
 }
 
+/**
+ * Hàm tạo RefreshToken
+ * @param {String} userId  id của user
+ * @returns RefreshToken
+ * Author: 
+ */
+const generateRefreshToken = (userId) => {
+  try {
+    return jwt.sign(
+      {_id: userId},
+      process.env.JWT_SECRET,
+      { expiresIn: '120m'}
+      );
+  } catch (error) {
+    console.error("Đã xảy ra lỗi: ", error);
+  }
+}
+
 module.exports = {
-  generateAccessToken
+  generateAccessToken,
+  generateRefreshToken
 }

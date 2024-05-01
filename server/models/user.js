@@ -1,5 +1,6 @@
 const mongoose = require('mongoose'); // Erase if already required
 const bcrypt = require("bcrypt");
+const crypto = require('crypto');
 
 // Declare the Schema of the Mongo model
 var userSchema = new mongoose.Schema({
@@ -23,7 +24,7 @@ var userSchema = new mongoose.Schema({
     mobile:{
         type:String,
         required:true,
-        unique:true,
+        unique:false,
     },
     // Mật khẩu
     password:{
@@ -33,6 +34,7 @@ var userSchema = new mongoose.Schema({
     // Quyền người dùng - mặc định user
     role:{
       type:String,
+      enum: ['user', 'admin'], // quyền chỉ có thể là user hoặc admin
       default: 'user',
     },
     // Giỏ hàng
@@ -106,6 +108,18 @@ userSchema.methods = {
    */
   isCorrectPassword: async function (password) {
     return await bcrypt.compare(password, this.password);
+  },
+
+  /**
+   * Tạo resetToken và mã hóa bằng sha256 rồi lưu vào DB
+   * @returns resetToken được tạo (chưa mã hóa)
+   * Author:
+   */
+  createPasswordChangedToken: function () {
+     const resetToken = crypto.randomBytes(32).toString('hex'); // hệ hexan
+     this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+     this.passwordResetExpires = Date.now() + 15*60*1000; // thời gian hết hạn reset password token là 15 phút
+     return resetToken;
   }
 }
 
