@@ -46,12 +46,22 @@ const baseErrorHandler = (BaseError, req, res, next) => {
       })
 
     default:
-      return res.status(500).json({
-        success: BaseError.success ? BaseError.success : false,
-        code: BaseError.code ? BaseError.code : 500,
-        devMsg: BaseError.devMsg? BaseError.devMsg : BaseError.message,
-        userMsg: BaseError.userMsg? BaseError.userMsg : "Đã xảy ra lỗi từ máy chủ.",
-      });
+      if(BaseError?.code <= 500 || BaseError?.code >= 400) {
+        return res.status(BaseError.code).json({
+          success: BaseError.success ? BaseError.success : false,
+          code: BaseError.code ? BaseError.code : 500,
+          devMsg: BaseError.devMsg? BaseError.devMsg : BaseError.message,
+          userMsg: BaseError.userMsg? BaseError.userMsg : "Đã xảy ra lỗi từ máy chủ.",
+        });
+      }
+      else {
+        return res.status(500).json({
+          success: BaseError.success ? BaseError.success : false,
+          code: BaseError.code ? BaseError.code : 500,
+          devMsg: BaseError.devMsg? BaseError.devMsg : BaseError.message,
+          userMsg: BaseError.userMsg? BaseError.userMsg : "Đã xảy ra lỗi từ máy chủ.",
+        });
+      }
       break;
   }
 };

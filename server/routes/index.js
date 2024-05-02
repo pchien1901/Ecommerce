@@ -1,5 +1,6 @@
 const userRouter = require("./user-routes.js");
 const productRouter = require("./product-routes.js");
+const productCategoryRouter = require("./productCategory-routes.js");
 const {
   notFound,
   errorHandler,
@@ -14,6 +15,7 @@ const {
 const initRoutes = (app) => {
   app.use("/api/v1/users", userRouter);
   app.use("/api/v1/products", productRouter);
+  app.use("/api/v1/product-categories", productCategoryRouter);
 
   // Middleware
   /**

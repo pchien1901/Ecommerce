@@ -259,6 +259,10 @@ const ratings = async (userId, productId, star, comment) => {
       );
       if(response.modifiedCount > 0) {
         let newProduct = await Product.findById(productId);
+        let ratingsCount = newProduct.ratings.length; // tổng số đánh giá
+        let sumOfStar = newProduct.ratings.reduce((sum, userRating) => sum + userRating.star * 1, 0); // tính tổng số sao 
+        newProduct.totalRatings = Math.round(sumOfStar * 10 / ratingsCount) / 10; // tính số sao trung bình làm tròn 1 chữ số
+        newProduct.save();
         return {
           sucess: true,
           code: 200,
@@ -284,6 +288,10 @@ const ratings = async (userId, productId, star, comment) => {
         },
         { new: true } // dùng new : true trả về bản ghi mới
       );
+      let ratingsCount = response.ratings.length;
+      let sumOfStar = response.ratings.reduce((sum, userRating) => sum + userRating.star, 0);
+      response = Math.round(sumOfStar * 10 / ratingsCount)/10;
+      response.save();
       return {
         success: response ? true : false,
         code: response ? 200 : 500,
