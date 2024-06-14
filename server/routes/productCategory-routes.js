@@ -6,6 +6,7 @@ const productCatgoryRules = require("../middlewares/validation/validation-rules/
 
 
 router.get("/:pcid", productCategoryController.getProductCategoryById);
+
 router.put(
   "/:pcid",
   [verifyAccessToken, isAdmin],
@@ -13,11 +14,13 @@ router.put(
   [productCategoryMiddleware.updateProductCategoryMiddleware],
   productCategoryController.updateProductCategoryById
 );
+
 router.delete(
   "/:pcid",
   [verifyAccessToken, isAdmin],
   productCategoryController.deleteProductCategoryById
 );
+
 router.post(
   "/",
   [verifyAccessToken, isAdmin],
@@ -25,6 +28,7 @@ router.post(
   [productCategoryMiddleware.createProductCategoryMiddleware],
   productCategoryController.createProductCategory
 );
+
 router.get("/", productCategoryController.getProductCategories);
 
 module.exports = router;

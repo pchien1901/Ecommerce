@@ -27,7 +27,7 @@ const notFound = (req, res, next) => {
  */
 const baseErrorHandler = (BaseError, req, res, next) => {
   console.log("Đã xảy ra lỗi ở baseErrorHandler: ",BaseError);
-  switch (BaseError.code) {
+  switch (BaseError?.code) {
     case 200:
       return res.status(500).json({
         success: BaseError.success,
@@ -78,7 +78,7 @@ const baseErrorHandler = (BaseError, req, res, next) => {
  * Author: PMChien
  */
 const errorHandler = (error, req, res, next) => {
-  console.log(res.statusCode);
+  //console.log(res.statusCode);
   console.log("Đã xảy ra lỗi ở errorHandler: ", error);
   let status = res?.statusCode === 200 ? 500 : res?.statusCode;
   if (!status) {

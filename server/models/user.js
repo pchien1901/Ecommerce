@@ -38,17 +38,16 @@ var userSchema = new mongoose.Schema({
       default: 'user',
     },
     // Giỏ hàng
-    cart:{
-      type: Array,
-      default: [],
-    },
+    cart:[{
+      product: { type: mongoose.Types.ObjectId, ref: "Product" }, // id của mặt hàng
+      quantity: Number, // số lượng
+      color: String,
+    }],
     // Địa chỉ
-    address: [
-      {
-        type: mongoose.Types.ObjectId, 
-        ref: 'Address'
-      }
-    ],
+    address: {
+      type: Array,
+      default: []
+    },
     // Bài viết yêu thích
     wishList: [
       {

@@ -3,8 +3,16 @@ const userController = require("../controllers/user-controller.js");
 const { verifyAccessToken, isAdmin } = require("../middlewares/verifyToken.js");
 const userValidationRules = require("../middlewares/validation/validation-rules/user-validation-rules.js");
 const userMiddleware = require("../middlewares/validation/validation-middlewares/user-validation-middlewares.js");
+const validationMiddleware = require("../middlewares/validation/validation-middlewares/validation-middleware.js");
 
 // middleware đặt trong dấu ngoặc vuông để phân biệt
+router.put(
+  "/cart", 
+  [verifyAccessToken], 
+  userValidationRules.updateCart(), 
+  [validationMiddleware.validationMiddleware], 
+  userController.updateCart
+);
 router.post("/register", userController.register);
 router.post("/register-admin", userController.registerAdmin);
 router.post("/login", userController.login);

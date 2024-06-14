@@ -42,7 +42,7 @@ const createProductCategory = async (productCategory) => {
  * @param {*} _id id của product category
  * @returns {object} {
  *  success: true - thành công,
- *  code: 200/500,
+ *  code: 200/404,
  *  devMsg: "".
  *  userMsg: "",
  *  data: product category
@@ -53,7 +53,7 @@ const getProductCategoryById = async (_id) => {
   let productCategory = await  ProductCategory.findById(_id);
   return {
     success: productCategory ? true : false,
-    code: productCategory ? 200 : 500,
+    code: productCategory ? 200 : 404,
     devMsg: productCategory ? "" : "findById return null.",
     userMsg: productCategory ? "" : "Không tìm thấy danh mục sản phẩm.",
     data: productCategory
@@ -94,13 +94,16 @@ const getProudctCategories = async (req) => {
   let queryCommand = ProductCategory.find(formatQueries); // không dùng await để thêm các phần sort, pageing
 
   // sorting
-  if(queries?.sort) {
+  if(req.query?.sort) {
     let sortBy = req.query.sort.split(',').join(' ');
     queryCommand = queryCommand.sort(sortBy);
   }
+  else {
+    queryCommand = queryCommand.sort("-createdAt");
+  }
 
   // fields limiting 
-  if(queries?.fields) {
+  if(req.query?.fields) {
     let fieldsLimit = req.query.fields.split(',').join(' ');
     queryCommand = queryCommand.select(fieldsLimit);
   }

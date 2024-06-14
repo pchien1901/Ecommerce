@@ -1,5 +1,6 @@
 const User = require("../models/user.js");
 const BaseError = require("../exception/base-error.js");
+const { isValidObjectId } = require("../ultis/helper.js") 
 
 // API CREATE
 /**
@@ -201,10 +202,125 @@ const updateUserById = async (id, userData) => {
   }
 }
 
+/**
+ * Cập nhật giỏ hàng theo option
+ * @param {ObjectId} userId id của người dùng
+ * @param {ObjectId} productId id của sản phẩm
+ * @param {Number} quantity số lượng thay đổi ( số nguyên dương)
+ * @param {String} color Màu sắc sản phẩm
+ * @param {String} option Hành động với sản phẩm "add" - thêm, "delete" - xóa
+ * @returns {Object} {
+ *  success: true - thành công,
+ *  code: 200,
+ *  devMsg: "",
+ *  userMsg: "",
+ *  data: user sau khi cập nhật
+ * }
+ * Author: PMChien (21/05/2024)
+ */
+const updateCart = async (userId, productId, quantity, color, option) => {
+  if(!userId) {
+    throw new BaseError(false, 400, "!userId.", "Đã xảy ra lỗi.");
+  }
+  else {
+    let isValidId = isValidObjectId(userId);
+    if(!isValidId) {
+      throw new BaseError(false, 400, "userId không phải ObjectId.", "");
+    }
+  }
+  if(!productId) {
+    throw new BaseError(false, 400, "!productId.", "Đã xảy ra lỗi.");
+  }
+  if(!quantity) {
+    throw new BaseError(false, 400, "!quantity.", "Đã xảy ra lỗi.");
+  }
+  if(!color) {
+    throw new BaseError(false, 400, "!color.", "Đã xảy ra lỗi.");
+  }
+  let user = await User.findById(userId);
+  if(!user) {
+    throw new BaseError(false, 404, "Không tìm thấy user theo userId.", "");
+  }
+  let isExistProductArray = user.cart?.filter(item => item.product.toString() === productId);
+  // nếu chưa có sản phẩm productId trong giỏ hàng
+  if(isExistProductArray.length === 0) {
+    if(option === 'add') {
+      user.cart.push({ product: productId, quantity, color});
+      await user.save();
+      const { password, passwordChangedAt, refreshToken, ...userData } = user.toObject();
+      return {
+        success: true,
+        code: 200,
+        devMsg: "Thêm sản phẩm thành công.",
+        userMsg: "Đã thêm vào giỏ hàng.",
+        data: userData
+      }
+    }
+  }
+  // Nếu đã có productId trong giỏ hàng
+  else {
+    // kiểm tra xem đã có sản phẩm có màu là color chưa
+    let duplicateColorInCart = isExistProductArray.find(item => item.color === color);
+    // Nếu đã có màu trùng
+    if(duplicateColorInCart) {
+      if(option === 'add') {
+        user.cart.forEach(item => {
+          if(item.product.toString() === productId && item.color === color) {
+            item.quantity += quantity * 1;
+          }
+        });
+        await user.save();
+        const { password, passwordChangedAt, refreshToken, ...userData } = user.toObject();
+        return {
+          success: true,
+          code: 200,
+          devMsg: "Thêm sản phẩm thành công.",
+          userMsg: "Đã thêm vào giỏ hàng.",
+          data: userData
+        }
+      }
+      if(option === 'delete') {
+        user.cart.forEach(item => {
+          if(item.product.toString() === productId && item.color === color) {
+            item.quantity -= quantity * 1;
+            item.quantity = item.quantity > 0 ? item.quantity : 0;
+          }
+        });
+        let newCart = user.cart.filter(item => item.quantity > 0);
+        user.cart = newCart;
+        await user.save();
+        const { password, passwordChangedAt, refreshToken, ...userData } = user.toObject();
+        return {
+          success: true,
+          code: 200,
+          devMsg: "Xóa sản phẩm thành công.",
+          userMsg: "Đã xóa.",
+          data: userData
+        }
+      }
+    }
+    else {
+      if(option === 'add') {
+        user.cart.push({ product: productId, quantity, color});
+        await user.save();
+        const { password, passwordChangedAt, refreshToken, ...userData } = user.toObject();
+        return {
+          success: true,
+          code: 200,
+          devMsg: "Thêm sản phẩm thành công.",
+          userMsg: "Đã thêm vào giỏ hàng.",
+          data: userData,
+        }
+      }
+    }
+  }
+}
+
 module.exports = {
   getUsers,
   getUserById,
   registerAdmin,
   deleteUserById,
-  updateUserById
+  updateUserById,
+  updateCart
 }

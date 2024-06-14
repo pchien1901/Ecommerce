@@ -98,15 +98,18 @@ const getProducts = async (req) => {
 
   // Sorting
   // Nếu query có sort
-  if(req.query.sort) {
+  if(req.query?.sort) {
     // tách các trường bằng dấu ',' và nối bằng dấu ' '
     let sortBy = req.query.sort.split(',').join(' ');
     queryCommand =  queryCommand.sort(sortBy); // thêm điều kiện sort vào queryCommand
   }
+  else {
+    queryCommand = queryCommand.sort("-createdAt");
+  }
 
   // Fields Limiting
   // Chỉ chọn ra các trường được chỉ định
-  if(req.query.fields) {
+  if(req.query?.fields) {
     // Lọc các trường cần lấy, cắt theo ',' và nối bằng ' '
     let fieldsLimit = req.query.fields.split(',').join(' ');
     // chọn các trường cần lấy bằng .select()
@@ -303,11 +306,46 @@ const ratings = async (userId, productId, star, comment) => {
   }
 }
 
+/**
+ * Tải ảnh lên / update ảnh của sản phẩm
+ * @param {ObjectId} productId id của sản phẩm
+ * @param {Array} files files trả về từ cloudinary
+ * @returns {Object} {
+ *  success: true - thành công,
+ *  code: 200,
+ *  devMsg: "",
+ *  userMsg: "",
+ *  data: product after update
+ * }
+ * Author: PMChien (15/05/2024)
+ */
+const uploadImages = async (productId, files) => {
+  if(files.length === 0) {
+  //if(!files) {
+    throw new BaseError(false, 400, "Không tìm thấy files.", "Đã xảy ra lỗi trong quá trình tải ảnh.");
+  }
+  let productInDb = await Product.findById(productId);
+  if(!productInDb) {
+    throw new BaseError( false, 404, "Không tìm thấy sản phẩm.", "Không tìm thấy sản phẩm.");
+  }
+  let newImages = files.map(image => image.path);
+  productInDb.images = productInDb.images.concat(newImages);
+  await productInDb.save();
+  return {
+    success: true,
+    code: 200,
+    devMsg: "",
+    userMsg: "",
+    data: productInDb
+  }
+}
+
 module.exports = {
   createProduct,
   getProductById,
   getProducts,
   updateProductById,
   deleteProductById,
-  ratings
+  ratings,
+  uploadImages
 };

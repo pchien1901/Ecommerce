@@ -434,6 +434,18 @@ const updateUserById = asyncHandler( async(req, res) => {
   }
 });
 
+/**
+ * Controller cập nhật giỏ hàng
+ * Author: PMChien (21/05/2024)
+ */
+const updateCart = asyncHandler( async (req, res) => {
+  let { _id } = req.user;
+  let { productId, quantity, color, option } = req.body;
+  let result = await userServices.updateCart(_id, productId, quantity, color, option);
+  console.log(result);
+  return res.status(result?.code).json(result);
+})
+
 module.exports = {
   register,
   registerAdmin,
@@ -446,5 +458,6 @@ module.exports = {
   getUsers,
   getUserById,
   deleteUserById,
-  updateUserById
+  updateUserById,
+  updateCart
 };

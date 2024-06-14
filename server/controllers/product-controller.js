@@ -101,11 +101,23 @@ const ratings = asyncHandler(async (req, res) => {
   }
 });
 
+/**
+ * Controller tải ảnh / upload ảnh của sản phẩm
+ * Author: PMChien (15/05/2-24)
+ */
+const uploadImages = asyncHandler( async (req, res) => {
+  const { pid } = req.params;
+  const files = req.files;
+  const result = await productServices.uploadImages(pid, files);
+  return res.status(result?.code).json(result);
+});
+
 module.exports = {
   createProduct,
   getProductById,
   getProducts,
   updateProductById,
   deleteProductbyId,
-  ratings
+  ratings,
+  uploadImages
 };

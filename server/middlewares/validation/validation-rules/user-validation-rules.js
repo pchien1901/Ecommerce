@@ -1,6 +1,7 @@
 const { body } = require('express-validator');
 const User = require("../../../models/user.js");
 const BaseError = require("../../../exception/base-error.js");
+const { isValidObjectId } = require("../../../ultis/helper.js");
 
 const updateUserValidationRules = () => {
   //console.log("Tới cấu hình body rồi: ");
@@ -44,6 +45,31 @@ const updateUserValidationRules = () => {
   ]
 }
 
+/**
+ * Kiểm tra các trường productId, quantity, color, option của body
+ * @returns vadilator của update cart
+ * Author: PMChien (24/05/2024)
+ */
+const updateCart = () => {
+  return [
+    body('productId').trim().notEmpty().withMessage("Sản phẩm không được để trống.")
+                      .custom( value => {
+                        let isValidId = isValidObjectId(value);
+                        if(isValidId) {
+                          return true;
+                        }
+                        throw new BaseError( false, 400, "productId không phải ObjectId.", "Sản phẩm không hợp lệ.");
+                      }),
+    body("quantity").trim().notEmpty().withMessage("Số lượng không được để trống.")
+                    .isInt({ gt: 0}).withMessage("Số lượng phải là số nguyên dương."),
+    body("color").trim().notEmpty().withMessage("Phân loại không được để trống.")
+                  .isString().withMessage("Phân loại phải là một chuỗi."),
+    body('option').trim().notEmpty().withMessage("Chưa có hành động cập nhật.")
+                  .isIn(['add', 'delete']),
+  ];
+}
+
 module.exports = {
-  updateUserValidationRules
+  updateUserValidationRules,
+  updateCart
 }
