@@ -6,6 +6,7 @@ const blogRouter = require("./blog-routes.js");
 const brandRouter = require("./brand-routes.js");
 const couponRouter = require("./coupon-routes.js");
 const orderRouter = require("./order-routes.js");
+const insertRouter = require("./insert-routes.js");
 const {
   notFound,
   errorHandler,
@@ -26,6 +27,7 @@ const initRoutes = (app) => {
   app.use("/api/v1/brands", brandRouter);
   app.use("/api/v1/coupons", couponRouter);
   app.use("/api/v1/orders", orderRouter);
+  app.use("/api/v1/insert", insertRouter);
 
   // Middleware
   /**

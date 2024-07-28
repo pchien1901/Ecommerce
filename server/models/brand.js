@@ -9,6 +9,10 @@ var brandSchema = new mongoose.Schema({
         unique:true,
         index:true,
     },
+    categories: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'ProductCategory'
+    }]
 }, {
   timestamps: true
 });

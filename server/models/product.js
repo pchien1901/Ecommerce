@@ -1,4 +1,5 @@
 const mongoose = require("mongoose"); // Erase if already required
+const attributeSchema = require('./attribute');
 
 // Declare the Schema of the Mongo model
 var productSchema = new mongoose.Schema(
@@ -18,12 +19,12 @@ var productSchema = new mongoose.Schema(
     },
     // Mô tả chi tiết sản phẩm
     description: {
-      type: String,
+      type: Array,
     },
     // Brand - nhãn hiệu
     brand: {
       type: String,
-      required: true,
+      //required: true,
     },
     // price - giá
     price: {
@@ -45,14 +46,18 @@ var productSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    // images - các link ảnh
+    // ảnh đại diện
+    thumb: {
+      type: String
+    },
+    // images - các link ảnh biến thể
     images: {
       type: Array,
     },
-    // color - màu
-    color: {
-      type: String,
-      enum: ["Black", "Gray", "Red"],
+    // Các thuộc tính sản phẩm
+    attributes: {
+      type: [attributeSchema],
+      default: []
     },
     // ratings -
     ratings: [

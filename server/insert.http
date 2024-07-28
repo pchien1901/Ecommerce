@@ -1,0 +1,8 @@
+###
+POST http://localhost:5000/api/v1/insert
+
+###
+POST http://localhost:5000/api/v1/insert/brands
+
+###
+POST http://localhost:5000/api/v1/insert/product-categories

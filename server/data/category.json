@@ -1,0 +1,99 @@
+[
+    {
+        "category": "Smartphone",
+        "brand": [
+            "XIAOMI",
+            "VIVO",
+            "SONY",
+            "SAMSUNG",
+            "LG",
+            "IPHONE",
+            "HTC",
+            "GOOGLE"
+        ]
+    },
+    {
+        "category": "Tablet",
+        "brand": [
+            "XIAOMI",
+            "SONY",
+            "SAMSUNG",
+            "LG",
+            "LENOVO",
+            "HUAWEI",
+            "ASUS",
+            "APPLE"
+        ]
+    },
+    {
+        "category": "Laptop",
+        "brand": [
+            "LENOVO",
+            "HP",
+            "DELL",
+            "ASUS",
+            "APPLE",
+            "ACER"
+        ]
+    },
+    {
+        "category": "Camera",
+        "brand": [
+            "USB",
+            "SENNHEISER",
+            "SAMSUNG",
+            "MOTOROLA",
+            "LOGITECH",
+            "JBL",
+            "APPLE"
+        ]
+    },
+    {
+        "category": "Printer",
+        "brand": [
+            "USB",
+            "SENNHEISER",
+            "SAMSUNG",
+            "MOTOROLA",
+            "LOGITECH",
+            "JBL",
+            "APPLE"
+        ]
+    },
+    {
+        "category": "Speaker",
+        "brand": [
+            "USB",
+            "SENNHEISER",
+            "SAMSUNG",
+            "MOTOROLA",
+            "LOGITECH",
+            "JBL",
+            "APPLE"
+        ]
+    },
+    {
+        "category": "Accessories",
+        "brand": [
+            "SAMSUNG",
+            "MOTOROLA",
+            "LOGITECH",
+            "JBL",
+            "APPLE",
+            "USB",
+            "SENNHEISER"
+        ]
+    },
+    {
+        "category": "Television",
+        "brand": [
+            "USB",
+            "SENNHEISER",
+            "SAMSUNG",
+            "MOTOROLA",
+            "LOGITECH",
+            "JBL",
+            "APPLE"
+        ]
+    }
+]
