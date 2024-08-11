@@ -1,4 +1,4 @@
-import axios from './axios';
+import axios from './axios.js';
 import { route } from './api.routes.js';
 
 /**
@@ -13,7 +13,7 @@ import { route } from './api.routes.js';
  * }
  * Author: PMChien (04/08/2024)
  */
-export const getAllProductCategories = async () => {
+const getAllProductCategories = async () => {
     try {
         let response = await axios({ 
             url: route.productCategory.getAllCategories,
@@ -21,10 +21,16 @@ export const getAllProductCategories = async () => {
         });
 
         if(response?.status === 200) {
-            //console.log(response);
             return response.data;
         }
     } catch (error) {
-        console.error(`Đã có lỗi : ${error}`)
+        console.error(`Đã có lỗi : ${error}`);
+        return error;
     }
 }
+
+const productCategories = {
+    getAllProductCategories
+}
+
+export default productCategories;

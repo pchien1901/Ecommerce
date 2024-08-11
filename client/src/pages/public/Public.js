@@ -4,7 +4,7 @@ import { Navigation, Header } from '../../components';
 
 const Public = () => {
     return (
-        <div className='w-full flex flex-col items-center'>
+        <div className='w-main block my-0 mx-auto box-border'>
             <Header />
             <Navigation />
             <div>

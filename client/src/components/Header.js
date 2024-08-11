@@ -7,7 +7,7 @@ import path from '../ultis/path';
 const Header = () => {
     const { RiPhoneFill, MdEmail, CiUser, GiShoppingBag } = icons;
     return (
-        <div className='border w-main h-[110px] py-[35px] flex justify-between items-center'>
+        <div className='w-main h-[110px] py-[35px] flex justify-between items-center'>
             <Link to={`/${path.HOME}`}>
                 <img src={logo} alt='logo' className='w-[234px] object-contain'/>
             </Link>

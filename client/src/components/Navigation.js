@@ -6,7 +6,7 @@ import icons from '../ultis/icon';
 const Navigation = () => {
     const { RiArrowDropDownFill } = icons
     return (
-        <div className='w-main h-[48px] py-2 border text-sm flex items-center'>
+        <div className='w-main h-[48px] py-2 mb-5 border-y text-sm flex items-center'>
             {
                 navigation.map(el => (
                     <NavLink 
