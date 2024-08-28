@@ -1,24 +1,7 @@
-import React, { useEffect } from 'react';
-import { Sidebar, Banner } from "../../components"
-import product from "../../apis/product";
+import React from 'react';
+import { Sidebar, Banner, BestSeller } from "../../components"
 
 const Home = () => {
-
-    useEffect(() => {
-        Promise.all(
-            [
-                product.getAllProduct({ sort: '-sold', limit: '10'}),
-                product.getAllProduct({ sort: '-createdAt', limit: '10'})
-            ]
-        )
-        .then(response => {
-            console.log("best seller: ", response[0]);
-            console.log("new arrival: ", response[1]);
-        })
-        .catch(error => {
-            console.error(`Đã có lỗi ${ error }`);
-        })
-    }, []);
 
     return (
         <div className='w-main'>
@@ -34,8 +17,30 @@ const Home = () => {
                 <div className='w-[24%]'>
                     <Sidebar />
                 </div>
-                <div className='pl-[10px] max-h-[494px] flex-1'>
+                <div className='pl-[20px] max-h-[494px] flex-1'>
                     <Banner />
+                </div>
+            </div>
+            <div className='mb-[30px] max-w-[1220px] min-h-[547px] max-h-[598px] box-border flex'>
+                <div className='w-[24%]'>
+                    Daily deals
+                </div>
+                <div className='pl-[20px] flex-1'>
+                    <div className='min-h-[408px] max-h-[438px] w-[100%]'>
+                        <BestSeller />
+                    </div>
+                    <div className='min-h-[96px] max-h-[160px]'></div>
+                </div>
+            </div>
+            <div className='mb-[30px] max-w-[1220px] min-h-[547px] max-h-[598px] box-border flex'>
+                <div className='w-[24%]'>
+                    Daily deals
+                </div>
+                <div className='pl-[20px] flex-1'>
+                    <div className='min-h-[408px] max-h-[438px] w-[100%]'>
+                        <BestSeller />
+                    </div>
+                    <div className='min-h-[96px] max-h-[160px]'></div>
                 </div>
             </div>
         </div>

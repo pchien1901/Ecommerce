@@ -4,7 +4,7 @@ import { Navigation, Header } from '../../components';
 
 const Public = () => {
     return (
-        <div className='w-main block my-0 mx-auto box-border'>
+        <div className='w-main block my-0 mx-auto px-[20px] box-border'>
             <Header />
             <Navigation />
             <div>

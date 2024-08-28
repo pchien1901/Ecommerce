@@ -4,6 +4,25 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+:root {
+    --primary-color: #ee3131;
+    --chev: gray;
+    --color-10-light: #f04646;
+    --color-10-dark: #d62c2c;
+    --color-20-light: #f15a5a;
+    --color-20-dark: #be2727;
+    --color-30-light: #f36f6f;
+    --color-30-dark: #a72222;
+    --color-40-light: #f58383;
+    --color-40-dark: #8f1d1d;
+    --color-50-light: #f79898;
+    --color-50-dark: #771919;
+    --color-60-light: #f8adad;
+    --color-60-dark: #5f1414;
+    --color-70-light: #fac1c1;
+    --color-70-dark: #470f0f;
+}
+
 /* HOME PAGE*/
 .home__sidebar::-webkit-scrollbar {
     width: 5px;
@@ -22,4 +41,67 @@
 
 .home__sidebar::-webkit-scrollbar-thumb:hover {
     background: #b7ac9a;
+}
+
+/* SLIDER BEST SELLER */
+button.slick-next {
+    right: 60px;
+    z-index: 1;
+}
+
+button.slick-prev {
+    left: 0px;
+    z-index: 1;
+}
+
+button.slick-next::before {
+    color: var(--chev);
+    content: '\276F';
+    background-color: #fbeee6;
+    height: 80px;
+    width: 80px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-50%);
+    ocpacity: 0.25;
+}
+
+button.slick-next:hover::before {
+    color: var(--primary-color);
+}
+
+button.slick-prev:hover::before {
+    color: var(--primary-color);
+}
+
+button.slick-prev::before {
+    color: var(--chev);
+    content: '\276E';
+    background-color: #fbeee6;
+    height: 80px;
+    width: 80px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-50%);
+    ocpacity: 0.25;
+}
+
+/* CSS COMPONENT */
+
+/* PRODUCT CARD */
+.product__label .label__name .label::after {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 10px solid var(--color-50-light);
+    border-top: 13px solid transparent;
+    border-bottom: 12px solid transparent;
+    top: 0;
+    left: 100%;
 }
