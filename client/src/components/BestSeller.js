@@ -73,7 +73,7 @@ const BestSeller = () => {
                             <ProductCard 
                                 key={el._id}
                                 productData={el}
-                                label={tab? tab.label : 'New'}
+                                label={tab? tab.label : 'Hot'}
                             />
                         ))
                     }

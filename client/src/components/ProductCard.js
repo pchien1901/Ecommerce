@@ -1,6 +1,7 @@
 import React from 'react';
 import img from '../assets/productCommingSoon.png'
 import icons from '../ultis/icon';
+import { SelectOption } from './index';
 const label = {
 
 }
@@ -47,10 +48,10 @@ const label = {
  */
 const ProductCard = ({ productData, label }) => {
     console.log(label);
-    const { PiShootingStarFill, PiShootingStarLight } = icons;
+    const { PiShootingStarFill, PiShootingStarLight, FaEye, LuMenu, IoHeart, TbShoppingBagPlus } = icons;
     return (
         <div className='min-w-[230px] max-w-[295px] pl-[20px]'>
-            <div className='min-w-[225px] max-w-[275px] border border-basic p-[15px] mb-[20px]'>
+            <div className='min-w-[225px] max-w-[275px] border border-basic p-[15px] mb-[20px] group'>
                 <div className='product__image relative'>
                     <img src={ productData?.thumb || img} alt='true' className='w-full min-h-[198px] max-h-[243px] object-contain'/>
                     <div className='product__label absolute top-[-10px] left-[-10px]'>
@@ -60,12 +61,18 @@ const ProductCard = ({ productData, label }) => {
                             </span>
                         </div>
                     </div>
-                    <ul className='action-button'>
+                     
+                    {/* <ul className='action-button'>
                         <li className='wishlist'></li>
                         <li className='add-to-cart'></li>
                         <li className='quick-view'></li>
                         <li></li>
-                    </ul>
+                    </ul> */}
+                    <div className='action-button absolute bottom-0 left-0 right-0 flex justify-center items-center gap-4 invisible group-hover:visible group-hover:animate-slide-top'>
+                        <SelectOption icon={<IoHeart />} className={`wish-list`} title={`Add to wish list`}/>
+                        <SelectOption icon={<LuMenu />} className={`select-option`} title={`More option`}/>
+                        <SelectOption icon={<FaEye />} className={`quick-view`} title={`Quick view`}/>
+                    </div>
                 </div>
                 <div className='pt-[15px] pb-[6px] truncate w-[190px] font-main text-[16px] font-normal hover:text-main' title={productData?.title}>{productData?.title}</div>
                 <div className='product__price mb-[10px]'>
@@ -73,13 +80,20 @@ const ProductCard = ({ productData, label }) => {
                         { new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(productData.price) }
                     </span>
                 </div>
-                <div className='rating-star flex justify-start'>
-                    <div className='pr-2 text-color-20-light text-[20px]'>
-                        {
-                            productData.totalRatings > 0 ? <PiShootingStarFill /> : <PiShootingStarLight />
-                        }
+                <div className='rating-star flex justify-between'>
+                    <div className='flex items-center'>
+                        <div className='pr-2 text-color-20-light text-[20px]'>
+                            {
+                                productData.totalRatings > 0 ? <PiShootingStarFill /> : <PiShootingStarLight />
+                            }
+                        </div>
+                        <div className='text-[13px] text-pure-black'>{productData.totalRatings > 0 ? productData.totalRatings : 'No reviews yet'}</div>
                     </div>
-                    <div className='text-[13px] text-pure-black'>{productData.totalRatings > 0 ? productData.totalRatings : 'No reviews yet'}</div>
+                    <div className='add-to-cart w-10 h-10 flex items-center justify-center text-color-20-light border border-color-50-light rounded-lg  hover:bg-color-10-light hover:text-pure-white active:bg-color-20-dark active:text-pure-white cursor-pointer'
+                         title='Add to cart'
+                    >
+                        <TbShoppingBagPlus className='text-[18px]' />
+                    </div>
                 </div>
             </div>
         </div>
