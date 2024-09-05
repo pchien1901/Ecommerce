@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sidebar, Banner, BestSeller } from "../../components"
+import { Sidebar, Banner, BestSeller, MiniBanner, DealDaily } from "../../components"
 
 const Home = () => {
 
@@ -21,26 +21,30 @@ const Home = () => {
                     <Banner />
                 </div>
             </div>
-            <div className='mb-[30px] max-w-[1220px] min-h-[547px] max-h-[598px] box-border flex'>
-                <div className='w-[24%]'>
-                    Daily deals
+            <div className='mb-[30px] max-w-[1220px] min-h-[547px] box-border flex'>
+                <div className='w-[24%] flex-auto'>
+                    <DealDaily/>
                 </div>
                 <div className='pl-[20px] flex-1'>
-                    <div className='min-h-[408px] max-h-[438px] w-[100%]'>
+                    <div className='min-h-[408px]  w-[100%]'>
                         <BestSeller />
                     </div>
-                    <div className='min-h-[96px] max-h-[160px]'></div>
+                    <div className='min-h-[96px] max-h-[160px]'>
+                        <MiniBanner />
+                    </div>
                 </div>
             </div>
             <div className='mb-[30px] max-w-[1220px] min-h-[547px] max-h-[598px] box-border flex'>
-                <div className='w-[24%]'>
-                    Daily deals
+                <div className='w-[24%] '>
+                    <DealDaily/>
                 </div>
                 <div className='pl-[20px] flex-1'>
-                    <div className='min-h-[408px] max-h-[438px] w-[100%]'>
+                    <div className='min-h-[408px]  w-[100%]'>
                         <BestSeller />
                     </div>
-                    <div className='min-h-[96px] max-h-[160px]'></div>
+                    <div className='min-h-[96px] max-h-[160px]'>
+                        <MiniBanner />
+                    </div>
                 </div>
             </div>
         </div>

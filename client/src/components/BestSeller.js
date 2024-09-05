@@ -52,7 +52,7 @@ const BestSeller = () => {
     const tab = tabs.find(tab => tab.id === activeTab);
 
     return (
-        <div>
+        <div className='h-[100%]'>
             <div className='flex text-[20px] gap-8 pb-4 border-b border-main overflow-x-auto'>
                 {
                     tabs.map(el => (
