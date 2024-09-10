@@ -2,6 +2,7 @@ import React from 'react';
 import img from '../assets/productCommingSoon.png'
 import icons from '../ultis/icon';
 import { SelectOption } from './index';
+import { formatCurrency } from '../ultis/helper';
 const label = {
 
 }
@@ -77,7 +78,7 @@ const ProductCard = ({ productData, label }) => {
                 <div className='pt-[15px] pb-[6px] truncate w-[190px] font-main text-[16px] font-normal hover:text-main' title={productData?.title}>{productData?.title}</div>
                 <div className='product__price mb-[10px]'>
                     <span className='money font-main text-[16px] font-normal mb-[10px]'>
-                        { new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(productData.price) }
+                        { formatCurrency(productData.price) }
                     </span>
                 </div>
                 <div className='rating-star flex justify-between'>
@@ -89,7 +90,7 @@ const ProductCard = ({ productData, label }) => {
                         </div>
                         <div className='text-[13px] text-pure-black'>{productData.totalRatings > 0 ? productData.totalRatings : 'No reviews yet'}</div>
                     </div>
-                    <div className='add-to-cart w-10 h-10 flex items-center justify-center text-color-20-light border border-color-50-light rounded-lg  hover:bg-color-10-light hover:text-pure-white active:bg-color-20-dark active:text-pure-white cursor-pointer'
+                    <div className='add-to-cart w-10 h-10 flex items-center justify-center text-color-50-light border border-basic rounded-lg  hover:bg-color-10-light hover:text-pure-white active:bg-color-20-dark active:text-pure-white cursor-pointer'
                          title='Add to cart'
                     >
                         <TbShoppingBagPlus className='text-[18px]' />

@@ -17,11 +17,11 @@ export const appSlice = createSlice({
         builder.addCase(actions.getProductCategories.fulfilled, (state, action) => {
             state.isLoading = false;
             let { data } = action.payload;
+            console.log('data: ', data);
             state.productCategories = data;
-            //console.log(state.productCategories);
         });
         builder.addCase(actions.getProductCategories.rejected, (state, action) => {
-            //console.log(action.payload);
+            console.log("actions.getProductCategories.rejected ",action.payload);
         });
     }
 });

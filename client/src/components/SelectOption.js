@@ -14,7 +14,7 @@ import React from 'react';
 const SelectOption = ({ icon, className, title }) => {
     return (
         <div 
-            className={`${className ? className : ''} w-10 h-10 flex justify-center items-center rounded-full shadow-md border border-basic bg-pure-white text-pure-black hover:bg-color-10-light hover:text-pure-white active:bg-color-20-dark active:text-pure-white cursor-pointer`} 
+            className={`${className ? className : ''} w-10 h-10 flex justify-center items-center rounded-full shadow-md border border-basic bg-pure-white text-color-50-light hover:bg-color-10-light hover:text-pure-white active:bg-color-20-dark active:text-pure-white cursor-pointer`} 
             title={`${title ? title : ''}`}
         >
             { icon }

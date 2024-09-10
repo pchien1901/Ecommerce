@@ -7,7 +7,7 @@ const instance = axios.create({
   });
 
   // Thêm một bộ đón chặn request
-axios.interceptors.request.use(function (config) {
+  instance.interceptors.request.use(function (config) {
     // Làm gì đó trước khi request dược gửi đi
     return config;
   }, function (error) {
@@ -16,7 +16,7 @@ axios.interceptors.request.use(function (config) {
   });
 
 // Thêm một bộ đón chặn response
-axios.interceptors.response.use(function (response) {
+instance.interceptors.response.use(function (response) {
     // Bất kì mã trạng thái nào nằm trong tầm 2xx đều khiến hàm này được trigger
     // Làm gì đó với dữ liệu response
     return response.data;
@@ -24,7 +24,7 @@ axios.interceptors.response.use(function (response) {
     // Bất kì mã trạng thái nào lọt ra ngoài tầm 2xx đều khiến hàm này được trigger\
     // Làm gì đó với lỗi response
     console.error(`Đã có lỗi xảy ra : ${error}`);
-    return error;
+    return Promise.reject(error);
   });
 
   export default instance;

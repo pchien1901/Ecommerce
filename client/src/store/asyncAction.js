@@ -7,6 +7,7 @@ export const getProductCategories = createAsyncThunk(
         const response = await productCategories.getAllProductCategories();
         console.log(response);
         if(!response.success) {
+            console.log("reject: ", response.success);
             return rejectWithValue(response);
         }
         return response;

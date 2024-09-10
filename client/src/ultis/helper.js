@@ -10,16 +10,21 @@ const { AiOutlineStar, AiFillStar } = icons
  * Author: PMChien (05/08/2024)
  */
 export const createSlug = (string) => {
-    if(typeof string !== 'string') {
-        return '';
+    try {
+        if(typeof string !== 'string') {
+            return '';
+        }
+        else {
+            let slug = string.toLowerCase()
+                            .normalize("NFD")
+                            .replace(/[\u0300-\u036f]/g, "")
+                            .split(' ')
+                            .join('-');
+            return slug;
+        }
     }
-    else {
-        let slug = string.toLowerCase()
-                         .normalize("NFD")
-                         .replace(/[\u0300-\u036f]/g, "")
-                         .split(' ')
-                         .join('-');
-        return slug;
+    catch (e) {
+        console.error(`Đã xảy ra lỗi ${e}`);
     }
 }
 
@@ -30,15 +35,39 @@ export const createSlug = (string) => {
  * Author: PNChien (28/08/2024)
  */
 export const renderStarFromNumber = (number) => {
-    if(typeof number !== 'number') {
-        return;
+    try {
+        if(typeof number !== 'number') {
+            return;
+        }
+        const stars = []
+        for(let i = 0; i < +number; i++) {
+            stars.push(<AiFillStar />);
+        }
+        for(let i = 5; i > +number; i--) {
+            stars.push(<AiOutlineStar/>);
+        }
+        return stars;
+    } catch (error) {
+        console.error(`Đã xảy ra lỗi ${error}`);
+    } 
+}
+
+/**
+ * format tiền tệ
+ * @param {string} price 
+ * @returns format currency
+ * @author PMChien (10/09/2024)
+ */
+export const formatCurrency = (price) => {
+    try {
+        let num = Number(price);
+        if(!isNaN(num)) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price)
+        }
+        else {
+            return '';
+        }
+    } catch (error) {
+        console.error(`Đã xảy ra lỗi ${error}`);
     }
-    const stars = []
-    for(let i = 0; i < +number; i++) {
-        stars.push(<AiFillStar />);
-    }
-    for(let i = 5; i > +number; i--) {
-        stars.push(<AiOutlineStar/>);
-    }
-    return stars;
 }

@@ -31,9 +31,9 @@ const BestSeller = () => {
             ]
         )
         .then(response => {
-            setBestSeller(response[0].data.data);
-            setProducts(response[0].data.data);
-            setNewArrivals(response[1].data.data);
+            setBestSeller(response[0].data);
+            setProducts(response[0].data);
+            setNewArrivals(response[1].data);
         })
         .catch(error => {
             console.error(`Đã có lỗi ${ error }`);
@@ -58,7 +58,7 @@ const BestSeller = () => {
                     tabs.map(el => (
                         <span
                             key={el.id}
-                            className = {`${activeTab === el.id ? 'text-black' : 'text-gray-500'}  font-semibold cursor-pointer uppercase border-r border-basic pr-[20px]`}
+                            className = {`${activeTab === el.id ? 'text-pure-black' : 'text-gray-500'}  font-semibold cursor-pointer uppercase border-r border-basic pr-[20px]`}
                             onClick={() => { setActiveTab(activeTab !== el.id ? el.id : 1)}}
                         >
                             {el.name}

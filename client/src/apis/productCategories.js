@@ -19,10 +19,8 @@ const getAllProductCategories = async () => {
             url: route.productCategory.getAllCategories,
             method: 'get'
         });
-
-        if(response?.status === 200) {
-            return response.data;
-        }
+        console.log(response);
+        return response;
     } catch (error) {
         console.error(`Đã có lỗi : ${error}`);
         return error;
