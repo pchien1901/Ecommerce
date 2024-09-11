@@ -7,4 +7,5 @@ export { default as ProductCard } from './ProductCard';
 export { default as SelectOption } from './SelectOption';
 export { default as MiniBanner } from './MiniBanner';
 export { default as DealDaily } from './DealDaily';
+export { default as CountDown } from './CountDown';
 

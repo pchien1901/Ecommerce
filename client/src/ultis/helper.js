@@ -31,20 +31,22 @@ export const createSlug = (string) => {
 /**
  * Hàm tạo mảng các star theo số nhận vào
  * @param {number} number Số điểm trung bình trên thang 5 để hiển thị dưới dạng star
+ * @param {number} size kích thước (pixel) của icon star mặc định 16px
+ * @param {string} color tên class định nghĩa màu cho icon mặc định 'text-main'
  * @return {Array} stars - Mảng các icon star
  * Author: PNChien (28/08/2024)
  */
-export const renderStarFromNumber = (number) => {
+export const renderStarFromNumber = (number, size = 16, color = 'text-main') => {
     try {
         if(typeof number !== 'number') {
             return;
         }
         const stars = []
         for(let i = 0; i < +number; i++) {
-            stars.push(<AiFillStar />);
+            stars.push(<AiFillStar className={color} size={size}/>);
         }
         for(let i = 5; i > +number; i--) {
-            stars.push(<AiOutlineStar/>);
+            stars.push(<AiOutlineStar className={color} size={size}/>);
         }
         return stars;
     } catch (error) {

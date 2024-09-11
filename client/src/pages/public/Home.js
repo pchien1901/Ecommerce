@@ -22,7 +22,7 @@ const Home = () => {
                 </div>
             </div>
             <div className='mb-[30px] max-w-[1220px] min-h-[547px] box-border flex'>
-                <div className='w-[24%] flex-auto'>
+                <div className='w-[24%] '>
                     <DealDaily/>
                 </div>
                 <div className='pl-[20px] flex-1'>
