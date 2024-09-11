@@ -43,10 +43,10 @@ export const renderStarFromNumber = (number, size = 16, color = 'text-main') => 
         }
         const stars = []
         for(let i = 0; i < +number; i++) {
-            stars.push(<AiFillStar className={color} size={size}/>);
+            stars.push(<AiFillStar key={i} className={color} size={size}/>);
         }
         for(let i = 5; i > +number; i--) {
-            stars.push(<AiOutlineStar className={color} size={size}/>);
+            stars.push(<AiOutlineStar key={i} className={color} size={size}/>);
         }
         return stars;
     } catch (error) {

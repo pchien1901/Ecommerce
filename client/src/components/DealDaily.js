@@ -5,29 +5,80 @@ import img from '../assets/productCommingSoon.png';
 import { formatCurrency, renderStarFromNumber } from '../ultis/helper';
 import CountDown from './CountDown';
 
+
 /**
  * Component Đếm thời gian và hiển thị sản phẩm giảm giá tại Home
  */
 const DealDaily = () => {
     // icon ngôi sao
     const { AiFillStar, LuMenu } = icons;
+    const COUNTDOWN_NUMBER = 1;
 
-    const [ dealDaily, setDealDaily ] = useState(null);
-    const [ hour, setHour ] = useState(0);
-    const [ minute, setMinute ] = useState(0);
-    const [ second, setSecond ] = useState(0);
+    const [ dealDaily, setDealDaily ] = useState(null); //state lưu product hiển thị trên deal daily
+    const [ hour, setHour ] = useState(0); // state quản lý giờ
+    const [ minute, setMinute ] = useState(0); // state quản lý phút
+    const [ second, setSecond ] = useState(0); // state quản lý giây
+    const [ isExpire, setIsExpire ] = useState(false);  // state quản lý khi nào 
 
+    /**
+     * Gọi api lấy product để hiển thị tại deal daily, hiện tại đang lấy 1 product cố định
+     */
     const fetchDealDaily = async () => {
         const response = await product.getAllProduct({limit: 1, page: 2});
         console.log(response);
         if( response.success) {
             setDealDaily(response.data[0]);
+            
         }
     }
 
+    // useEffect dùng để gọi api lấy product hiển thị deal daily, chạy mỗi lần render
     useEffect(() => {
+        //clearInterval(idInterval);
         fetchDealDaily();
-    }, [])
+        console.log('gọi api lần tải trang đầu tiên.');
+    }, []);
+
+    // useEffet quản lý thời gian đếm ngược 
+    useEffect(() => {
+         let idInterval = setInterval(() => {
+            if(second > 0) {
+                setSecond((preSecond) => preSecond - 1);
+            }
+            else {
+                if (minute > 0) {
+                    setMinute((preMinute) => preMinute - 1);
+                    setSecond(COUNTDOWN_NUMBER);
+                }
+                else {
+                    if(hour > 0) {
+                        setHour((preHour) => preHour - 1);
+                        setMinute(COUNTDOWN_NUMBER);
+                        setSecond(COUNTDOWN_NUMBER);
+                    }
+                    else {
+                        setIsExpire(true);
+                    }
+                }
+            }
+        }, 1000); // chạy sau mỗi 1 s
+        return () => {
+            clearInterval(idInterval);
+        }
+    }, [second]);
+
+    // useEffect gọi product mới
+    useEffect(() => {
+        if(isExpire) {
+            fetchDealDaily();
+            console.log('gọi api mỗi lần reset');
+            setHour(COUNTDOWN_NUMBER);
+            setMinute(COUNTDOWN_NUMBER);
+            setSecond(COUNTDOWN_NUMBER);
+            setIsExpire(false);
+        }
+    }, [isExpire]);
+
     return (
         <div className='border border-basic w-full h-full p-5'> 
             <div className='flex items-center w-full mb-[30px]'>
