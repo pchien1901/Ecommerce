@@ -178,15 +178,86 @@ const getDealDailis = async (req) => {
     return result;
   }
 
+  /**
+   * Trả về deal daily hiện tại, nếu không có thì lấy deal từ danh sách deal sp ngẫu nhiên, không có nữa thì tạo deal mới từ sp ngẫu nhiên
+   * @returns {object} {
+   *   success: true - thành công/ false,
+   *   code: 200,
+   *    devMsg: "".
+   *    userMsg: "",
+   *    data: deal daily hiện tại
+   * }
+   * @author PMChien (12/09/2024)
+   */
 const getCurrentDealDaily = async () => {
     const currentTime = new Date();
 
     // Kiểm tra có deal nào hợp lệ trong thời gian current time không
-    let currentDeal = await DealDaily.findOne
+    // lấy deal daily có endTime gần nhất thỏa mãn startTime <= currentTime <= endTime 
+    let currentDeal = await DealDaily.findOne({
+                              startTime: { $lte: currentTime },
+                              endTime: { $gte: currentTime }
+                            })
+                            .sort({ endTime: 1 })
+                            .populate('productId')
+                            .populate('couponId');
+    if(currentDeal) {
+      return {
+        success: true,
+        code: 200,
+        devMsg: 'Lấy deal daily thành công',
+        userMsg: '',
+        data: currentDeal,
+      }
+    }
+    else {
+      // Nếu không có currentDeal, thực hiện lấy các bản ghi được đánh dấu ngẫu nhiên
+      let randomDeal = await DealDaily.findOne({
+        isRandom: true,
+        endTime: { $gte: currentTime }
+      }).sort({endTime : 1 }).populate('productId');
+      if(randomDeal) {
+        return {
+          success: true,
+          code: 200,
+          devMsg: 'Lấy deal daily thành công',
+          userMsg: '',
+          data: randomDeal,
+        }
+      }
+      else {
+        // Thực hiện tạo một randomDeal 
+        // Lấy một product ngẫu nhiên
+        const randomProduct = await Product.aggregate([{ $sample: {size : 1}}]);
+        if(!randomProduct.length) {
+          throw new BaseError(false, 404, "Không có sản phẩm để tạo deal daily", "Hệ thống sản phẩm chưa sẵn sàng.");
+        }
+        const startTime = currentTime;
+        const endTime = new Date(currentTime.getTime() + process.env.DEFAULT_HOUR * 60 * 60); // số giờ sau hết hạn được khai báo trong process.env.
+        let newRandomDeal = await DealDaily.create({
+          productId: randomDeal[0]._id,
+          startTime: startTime,
+          endTime: endTime,
+          isRandom: true
+        });
+
+        newRandomDeal = await DealDaily.findById(newRandomDeal._id).populate('productId');
+        return {
+          success: true,
+          code: 200,
+          devMsg: 'Lấy deal daily thành công',
+          userMsg: '',
+          data: newRandomDeal,
+        }
+      }
+    }
 }
+
+
   
 module.exports = {
     createDealDaily,
     getDealDailyById,
-    getDealDailis
+    getDealDailis,
+    getCurrentDealDaily
 }
