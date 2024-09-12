@@ -64,7 +64,7 @@ const getProductById = async (id) => {
   let product = await Product.findById(id);
   return {
     success: product ? true : false,
-    code: product ? 200 : 500,
+    code: product ? 200 : 404,
     devMsg: product ? "get product by id thành công." : "product === null.",
     userMsg: product ? "" : "Đã xảy ra lỗi.",
     data: product,
