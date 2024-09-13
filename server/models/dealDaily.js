@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const dealDailySchema = new mongoose.Schema({
     // id của sản phẩm trong dealDaily
-    productId: {
+    product: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Product', // Liên kết tới document Product
         required: true
@@ -18,7 +18,7 @@ const dealDailySchema = new mongoose.Schema({
         required: true
     },
     // Mã giảm giá áp dụng cho deal daily
-    couponId: {
+    coupon: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Coupon', // liên kết tới document Coupon
         default: null // mặc định là null

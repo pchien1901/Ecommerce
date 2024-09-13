@@ -45,7 +45,7 @@ const createDealDaily = async (productId, startTime, endTime, couponName = '', d
         startTime = new Date();
     }
 
-    let dealDaily = await DealDaily.create({productId: productId, startTime: startTime, endTime: endTime });
+    let dealDaily = await DealDaily.create({product: productId, startTime: startTime, endTime: endTime });
 
     if(couponName !== '' && discount !== 0 ) {
         // Kiểm tra tên mã giảm giá có bị trùng không
@@ -59,9 +59,11 @@ const createDealDaily = async (productId, startTime, endTime, couponName = '', d
             );
         }
         let coupon = await Coupon.create({ name: couponName, discount: discount, expiry: endTime });
-        dealDaily.couponId = coupon._id;
+        dealDaily.coupon = coupon._id;
         await dealDaily.save();
     }
+
+    dealDaily = await DealDaily.findById(dealDaily._id).populate('product').populate('coupon');
     return {
         success: dealDaily ? true : false,
         code: dealDaily ? 201 : 500,
@@ -84,7 +86,7 @@ const createDealDaily = async (productId, startTime, endTime, couponName = '', d
  * @author PMChien (12/09/2024)
  */
 const getDealDailyById = async (id) => {
-    let dealDaily = await DealDaily.findById(id).populate('productId').populate('couponId');
+    let dealDaily = await DealDaily.findById(id).populate('product').populate('coupon');
     return {
         success: dealDaily ? true : false,
         code: dealDaily ? 200 : 404,
@@ -153,6 +155,9 @@ const getDealDailis = async (req) => {
     let skip = (page - 1) * limit;
   
     queryCommand = queryCommand.skip(skip).limit(limit);
+
+    // Thêm populate
+    queryCommand = queryCommand.populate('product').populate('coupon');
   
     // execute query
     let result = await queryCommand.exec()
@@ -199,8 +204,8 @@ const getCurrentDealDaily = async () => {
                               endTime: { $gte: currentTime }
                             })
                             .sort({ endTime: 1 })
-                            .populate('productId')
-                            .populate('couponId');
+                            .populate('product')
+                            .populate('coupon');
     if(currentDeal) {
       return {
         success: true,
@@ -215,7 +220,7 @@ const getCurrentDealDaily = async () => {
       let randomDeal = await DealDaily.findOne({
         isRandom: true,
         endTime: { $gte: currentTime }
-      }).sort({endTime : 1 }).populate('productId');
+      }).sort({endTime : 1 }).populate('product');
       if(randomDeal) {
         return {
           success: true,
@@ -235,13 +240,13 @@ const getCurrentDealDaily = async () => {
         const startTime = currentTime;
         const endTime = new Date(currentTime.getTime() + process.env.DEFAULT_HOUR * 60 * 60); // số giờ sau hết hạn được khai báo trong process.env.
         let newRandomDeal = await DealDaily.create({
-          productId: randomDeal[0]._id,
+          product: randomDeal[0]._id,
           startTime: startTime,
           endTime: endTime,
           isRandom: true
         });
 
-        newRandomDeal = await DealDaily.findById(newRandomDeal._id).populate('productId');
+        newRandomDeal = await DealDaily.findById(newRandomDeal._id).populate('product');
         return {
           success: true,
           code: 200,
@@ -251,6 +256,21 @@ const getCurrentDealDaily = async () => {
         }
       }
     }
+}
+
+const updateDealDailyById = async (dealDailyId, dealDaily) => {
+  let dealDailyInDb = await DealDaily.findById(dealDailyId);
+  if(dealDailyInDb) {
+    let { startTime, endTime } = dealDaily;
+  }
+  else {
+    throw new BaseError(
+      false, 
+      404, 
+      `Không tìm thấy deal daily theo id ${dealDailyId}`, 
+      'Không tìm thấy deal daily.'
+    );
+  }
 }
 
 
