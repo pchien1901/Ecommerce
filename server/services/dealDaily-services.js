@@ -3,7 +3,7 @@ const Coupon = require('../models/coupon.js');
 const Product = require('../models/product.js');
 const BaseError =  require('../exception/base-error.js');
 const { isValidObjectId } = require('../ultis/helper.js');
-const { default: mongoose } = require('mongoose');
+const mongoose = require('mongoose');
 
 /**
  * Hàm tạo mới một deal daily 
@@ -259,11 +259,9 @@ const getCurrentDealDaily = async () => {
 }
 
 const updateDealDailyById = async (dealDailyId, dealDaily) => {
+  // Tìm deal daily trong db xem có không
   let dealDailyInDb = await DealDaily.findById(dealDailyId);
-  if(dealDailyInDb) {
-    let { startTime, endTime } = dealDaily;
-  }
-  else {
+  if(!dealDailyInDb) {
     throw new BaseError(
       false, 
       404, 
@@ -271,6 +269,60 @@ const updateDealDailyById = async (dealDailyId, dealDaily) => {
       'Không tìm thấy deal daily.'
     );
   }
+  
+  // Lấy giá trị startTime và endTime từ đối tượn dealDaily gửi từ client gán vào 2 biến newStartTime, newEndTime
+  let { startTime: newStartTime, endTime: newEndTime } = dealDaily;
+  
+
+  // Kiểm tra productId có hợp lệ không
+  let product = await Product.findById(dealDaily.product._id);
+  if(!product) {
+    throw new BaseError(
+      false,
+      400,
+      ` Không tìm thấy product có id là ${dealDaily.product._id}`,
+      'Sản phẩm tạo deal daily không tồn tại.'
+    );
+  }
+
+  // Kiểm tra couponId có hợp lệ không nếu client gửi lên có coupon
+  if(dealDaily.coupon && dealDaily.coupon._id) {
+    let coupon = await Coupon.findById(dealDaily.coupon._id);
+    if(!coupon) {
+      throw new BaseError(
+        false,
+        400,
+        `Không tìm thấy coupon có id là ${dealDaily.coupon._id} .`,
+        'Mã giảm giá không hợp lệ.'
+      );
+    }
+
+    // Trường hợp mã giảm giá hợp lệ, lấy tên mã giảm giá và % giảm giá để kiểm tra.
+    let { _id, name, discount } = dealDaily.coupon;
+    let conflictCouponInDb = await Coupon.find({ name: name, _id: {$ne : _id}});
+    if(conflictCouponInDb.length === 0) {
+      // Nếu không bị trùng name với coupon khác đã tồn tại thì cập nhật tên và tỉ lệ giảm giá.
+      coupon.name = name;
+      coupon.discount = discount;
+      await coupon.save();
+      // Gán lại coupon._id mới vào dealDailyInDb
+      dealDailyInDb.coupon = coupon._id;
+    }
+    else {
+      throw new BaseError(
+        false,
+        400,
+        `Tên mã giảm giá ${name} đã tồn tại trong DB.`,
+        `Mã giảm giá có tên ${name} đã tồn tại, vui lòng đặt tên khác.`
+      );
+    }
+  }
+  else {
+    // trường hợp client gửi lên không có coupon thì cập nhật lại dealDailyInDb.coupon = null.
+    dealDailyInDb.coupon = null;
+  }
+
+
 }
 
 
