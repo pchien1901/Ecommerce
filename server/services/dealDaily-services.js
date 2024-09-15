@@ -258,6 +258,19 @@ const getCurrentDealDaily = async () => {
     }
 }
 
+/**
+ * cập nhật deal daily theo id
+ * @param {*} dealDailyId id của deal daily cần update
+ * @param {*} dealDaily dealdaily truyền từ client lên
+ * @returns {objec} {
+ *  success: true - thành công/ false,
+ *  code: 200/500,
+ *  devMsg: '', 
+ *  userMsg: '',
+ *  data: updated deal daily
+ * }
+ * @author PMChien (15/09/2024)
+ */
 const updateDealDailyById = async (dealDailyId, dealDaily) => {
   // Tìm deal daily trong db xem có không
   let dealDailyInDb = await DealDaily.findById(dealDailyId);
@@ -272,7 +285,8 @@ const updateDealDailyById = async (dealDailyId, dealDaily) => {
   
   // Lấy giá trị startTime và endTime từ đối tượn dealDaily gửi từ client gán vào 2 biến newStartTime, newEndTime
   let { startTime: newStartTime, endTime: newEndTime } = dealDaily;
-  
+  dealDailyInDb.startTime = newStartTime;
+  dealDailyInDb.endTime = newEndTime;
 
   // Kiểm tra productId có hợp lệ không
   let product = await Product.findById(dealDaily.product._id);
@@ -284,6 +298,9 @@ const updateDealDailyById = async (dealDailyId, dealDaily) => {
       'Sản phẩm tạo deal daily không tồn tại.'
     );
   }
+
+  // Gán lại product bằng productId của data gửi lên
+  dealDailyInDb.product = dealDaily.product._id;
 
   // Kiểm tra couponId có hợp lệ không nếu client gửi lên có coupon
   if(dealDaily.coupon && dealDaily.coupon._id) {
@@ -304,6 +321,7 @@ const updateDealDailyById = async (dealDailyId, dealDaily) => {
       // Nếu không bị trùng name với coupon khác đã tồn tại thì cập nhật tên và tỉ lệ giảm giá.
       coupon.name = name;
       coupon.discount = discount;
+      coupon.expiry = newEnndTime;
       await coupon.save();
       // Gán lại coupon._id mới vào dealDailyInDb
       dealDailyInDb.coupon = coupon._id;
@@ -322,14 +340,47 @@ const updateDealDailyById = async (dealDailyId, dealDaily) => {
     dealDailyInDb.coupon = null;
   }
 
+  await dealDailyInDb.save();
 
+  let result = await DealDaily.findById(dealDailyId).populate('product').populate('coupon');
+  return {
+    success: result ? true : false,
+    code: result ? 200 : 500,
+    devMsg: result ? 'Cập nhật thành công.' : 'Cập nhật thất bại.',
+    userMsg: result ? 'Cập nhật thành công.' : 'Cập nhật thất bại.',
+    data: result
+  }
 }
 
+/**
+ * Xóa dealDaily theo id
+ * @param {mongoose.Schema.Types.ObjectId} id của deal daily
+ * @returns {object} {
+ *  success: true - thành công/ false,
+ *  code: 200/ 500,
+ *  devMsg: '',
+ *  userMsg: ''
+ *  data: deleted deal daily
+ * }
+ * @author PMChien (15/09/2024)
+ */
+deleteDealDailyById = async (dealDailyId) => {
+  let result = await DealDaily.findByIdAndDelete(dealDailyId);
+  return {
+    success: result ? true : false,
+    code: result ? 200 : 500,
+    devMsg: result ? 'Xóa thành công.' : 'Xóa không thành công.',
+    userMsg: result ? 'Xóa thành công.' : 'Xóa không thành công.',
+    data: result
+  }
+}
 
   
 module.exports = {
     createDealDaily,
     getDealDailyById,
     getDealDailis,
-    getCurrentDealDaily
+    getCurrentDealDaily,
+    updateDealDailyById,
+    deleteDealDailyById
 }
