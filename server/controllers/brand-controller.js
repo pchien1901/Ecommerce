@@ -45,7 +45,7 @@ const updateBrandById = asyncHandler(async (req, res) => {
  * Controller xóa một thương hiệu theo id
  * Author: PMChien (07/05/2024)
  */
-const deleteBrandByid = asyncHandler(async (req, res) => {
+const deleteBrandById = asyncHandler(async (req, res) => {
   let { brandId } = req.params;
   let result = await brandServices.deleteBrandById(brandId);
   return res.status(result?.code).json(result);
@@ -56,5 +56,5 @@ module.exports = {
   getBrandById,
   getBrands,
   updateBrandById,
-  deleteBrandByid
+  deleteBrandById
 }

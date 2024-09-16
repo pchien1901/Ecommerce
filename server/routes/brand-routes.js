@@ -21,7 +21,7 @@ router.put(
 router.delete(
   "/:brandId",
   [verifyAccessToken, isAdmin],
-  brandController.deleteBrandByid
+  brandController.deleteBrandById
 );
 
 router.post(

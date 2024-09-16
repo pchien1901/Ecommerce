@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 /**
  * Hàm tạo mới một deal daily 
- * @param {mongoose.Schema.Types.ObjectId} productId id của sản phẩm thêm vào deal daily
+ * @param {ObjectId} productId id của sản phẩm thêm vào deal daily
  * @param {*} startTime Thời gian bắt đầu deal daily mặc định là thời điểm bắt đầu chạy hàm
  * @param {*} endTime Thời gian kết thúc deal daily
  * @param {*} couponName Tên mã giảm giá
@@ -75,7 +75,7 @@ const createDealDaily = async (productId, startTime, endTime, couponName = '', d
 
 /**
  * Lấy deal daily theo id
- * @param {mongoose.Schema.Types.ObjectId} id id của deal daily
+ * @param {ObjectId} id id của deal daily
  * @returns {object} {
  *      success: true - thành công/false,
  *      code: 200/404,
@@ -101,7 +101,7 @@ const getDealDailyById = async (id) => {
  * @param {*} req request từ client
  * @author  PMChien (12/09/2024)
  */
-const getDealDailis = async (req) => {
+const getDealDailys = async (req) => {
     // copy query từ đường dẫn
     let queries = { ... req.query};
     
@@ -234,13 +234,14 @@ const getCurrentDealDaily = async () => {
         // Thực hiện tạo một randomDeal 
         // Lấy một product ngẫu nhiên
         const randomProduct = await Product.aggregate([{ $sample: {size : 1}}]);
+        //console.log('randomProduct: ', randomProduct);
         if(!randomProduct.length) {
           throw new BaseError(false, 404, "Không có sản phẩm để tạo deal daily", "Hệ thống sản phẩm chưa sẵn sàng.");
         }
         const startTime = currentTime;
-        const endTime = new Date(currentTime.getTime() + process.env.DEFAULT_HOUR * 60 * 60); // số giờ sau hết hạn được khai báo trong process.env.
+        const endTime = new Date(currentTime.getTime() + process.env.DEFAULT_HOUR * 60 * 60 * 1000); // số giờ sau hết hạn được khai báo trong process.env. ( phải nhân với 1000 vì tính theo mili giây)
         let newRandomDeal = await DealDaily.create({
-          product: randomDeal[0]._id,
+          product: randomProduct[0]._id,
           startTime: startTime,
           endTime: endTime,
           isRandom: true
@@ -260,9 +261,9 @@ const getCurrentDealDaily = async () => {
 
 /**
  * cập nhật deal daily theo id
- * @param {*} dealDailyId id của deal daily cần update
- * @param {*} dealDaily dealdaily truyền từ client lên
- * @returns {objec} {
+ * @param {ObjectId} dealDailyId id của deal daily cần update
+ * @param {object} dealDaily dealdaily truyền từ client lên
+ * @returns {object} {
  *  success: true - thành công/ false,
  *  code: 200/500,
  *  devMsg: '', 
@@ -354,7 +355,7 @@ const updateDealDailyById = async (dealDailyId, dealDaily) => {
 
 /**
  * Xóa dealDaily theo id
- * @param {mongoose.Schema.Types.ObjectId} id của deal daily
+ * @param {ObjectId} id của deal daily
  * @returns {object} {
  *  success: true - thành công/ false,
  *  code: 200/ 500,
@@ -364,7 +365,7 @@ const updateDealDailyById = async (dealDailyId, dealDaily) => {
  * }
  * @author PMChien (15/09/2024)
  */
-deleteDealDailyById = async (dealDailyId) => {
+const deleteDealDailyById = async (dealDailyId) => {
   let result = await DealDaily.findByIdAndDelete(dealDailyId);
   return {
     success: result ? true : false,
@@ -379,7 +380,7 @@ deleteDealDailyById = async (dealDailyId) => {
 module.exports = {
     createDealDaily,
     getDealDailyById,
-    getDealDailis,
+    getDealDailys,
     getCurrentDealDaily,
     updateDealDailyById,
     deleteDealDailyById
