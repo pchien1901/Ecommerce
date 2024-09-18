@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sidebar, Banner, BestSeller, MiniBanner, DealDaily } from "../../components"
+import { Sidebar, Banner, BestSeller, MiniBanner, DealDaily, DealCountDown } from "../../components"
 
 const Home = () => {
 
@@ -23,7 +23,7 @@ const Home = () => {
             </div>
             <div className='mb-[30px] max-w-[1220px] min-h-[547px] box-border flex'>
                 <div className='w-[24%] '>
-                    <DealDaily/>
+                    <DealCountDown/>
                 </div>
                 <div className='pl-[20px] flex-1'>
                     <div className='min-h-[408px]  w-[100%]'>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, memo} from 'react';
 import icons from '../ultis/icon';
-import product from '../apis/product';
 import { getCurrentDealDaily } from '../apis/dealDaily';
 import img from '../assets/productCommingSoon.png';
 import { formatCurrency, renderStarFromNumber } from '../ultis/helper';
@@ -10,11 +9,12 @@ import CountDown from './CountDown';
 /**
  * Component Đếm thời gian và hiển thị sản phẩm giảm giá tại Home
  */
-const DealDaily = () => {
+const DealCountDown = () => {
     // icon ngôi sao
     const { AiFillStar, LuMenu } = icons;
-    const COUNTDOWN_NUMBER = 60;
+    const COUNTDOWN_NUMBER = 1;
 
+    const [ deal, setDeal ] = useState(null);
     const [ dealDaily, setDealDaily ] = useState(null); //state lưu product hiển thị trên deal daily
     const [ hour, setHour ] = useState(0); // state quản lý giờ
     const [ minute, setMinute ] = useState(0); // state quản lý phút
@@ -22,72 +22,54 @@ const DealDaily = () => {
     const [ isExpire, setIsExpire ] = useState(false);  // state quản lý khi nào 
 
     /**
-     * Gọi api lấy product để hiển thị tại deal daily, hiện tại đang lấy 1 product cố định
+     * Hàm gọi api lấy deal daily tại thời điểm hiện tại, có deal sẽ cập nhật deal, set dealDaily và tính thời gian
      */
-    const fetchDealDaily = async () => {
-        const response = await product.getAllProduct({limit: 1, page: 2});
-        console.log(response);
-        if( response.success) {
-            setDealDaily(response.data[0]);
-            
-        }
+    const fetchDealAndUpdateCountDown = async () => {
+        const { data: deal } = await getCurrentDealDaily();
+        setDeal(deal);
+        setDealDaily(deal.product);
+        updateCountDown(new Date(deal.endTime) - new Date());
     }
 
     /**
-     * Hàm gọi api lấy deal daily tại thời điểm hiện tại
+     * Hàm cập nhật các giá trị hour, minute, second để hiển thị theo thời gian thực
+     * @param {number} timeDifferent chênh lệch thời gian tại thời điểm hiện tại và thời điểm kết thúc deal
+     * @author PMChien (18/09/2024)
      */
-    const getCurrentDeal = async () => {
-        const res = await getCurrentDealDaily();
-        console.log(res);
-    }
+    const updateCountDown = (timeDifferent) => {
+        const totalSeconds = Math.floor(timeDifferent / 1000); //số giây tính theo mili giây
+        const hours = Math.floor(totalSeconds / 3600); // giờ
+        const minutes = Math.floor((totalSeconds % 3600) /60);
+        const seconds = totalSeconds % 60
+
+        setHour(hours);
+        setMinute(minutes);
+        setSecond(seconds);
+    };
+
+    useEffect(() => {
+        console.log('goi api lần đầu.');
+        fetchDealAndUpdateCountDown();
+    }, []);
 
     // useEffect dùng để gọi api lấy product hiển thị deal daily, chạy mỗi lần render
     useEffect(() => {
-        //clearInterval(idInterval);
-        fetchDealDaily();
-        //getCurrentDeal();
-        console.log('gọi api lần tải trang đầu tiên.');
-    }, []);
-
-    // useEffet quản lý thời gian đếm ngược 
-    useEffect(() => {
-         let idInterval = setInterval(() => {
-            if(second > 0) {
-                setSecond((preSecond) => preSecond - 1);
+        const intervalId = setInterval(() => {
+            const now = new Date();
+            const endTime = new Date(deal?.endTime);
+            const timeDifferent = endTime - now;
+            //console.log('timeDifferent: ', timeDifferent);
+            if(timeDifferent <= 0) {
+                fetchDealAndUpdateCountDown();
             }
             else {
-                if (minute > 0) {
-                    setMinute((preMinute) => preMinute - 1);
-                    setSecond(COUNTDOWN_NUMBER);
-                }
-                else {
-                    if(hour > 0) {
-                        setHour((preHour) => preHour - 1);
-                        setMinute(COUNTDOWN_NUMBER);
-                        setSecond(COUNTDOWN_NUMBER);
-                    }
-                    else {
-                        setIsExpire(true);
-                    }
-                }
+                updateCountDown(timeDifferent);
             }
-        }, 1000); // chạy sau mỗi 1 s
-        return () => {
-            clearInterval(idInterval);
-        }
-    }, [second]);
+        }, 1000);
 
-    // useEffect gọi product mới
-    useEffect(() => {
-        if(isExpire) {
-            fetchDealDaily();
-            console.log('gọi api mỗi lần reset');
-            setHour(COUNTDOWN_NUMBER);
-            setMinute(COUNTDOWN_NUMBER);
-            setSecond(COUNTDOWN_NUMBER);
-            setIsExpire(false);
-        }
-    }, [isExpire]);
+        // clean up
+        return () => clearInterval(intervalId);
+    }, [deal]);
 
     return (
         <div className='border border-basic w-full h-full p-5'> 
@@ -122,4 +104,4 @@ const DealDaily = () => {
     )
 }
 
-export default memo(DealDaily); // bọc trong memo tránh re-render
+export default memo(DealCountDown); // bọc trong memo tránh re-render
