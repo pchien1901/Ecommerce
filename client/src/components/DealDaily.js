@@ -25,20 +25,31 @@ const DealDaily = () => {
      * Gọi api lấy product để hiển thị tại deal daily, hiện tại đang lấy 1 product cố định
      */
     const fetchDealDaily = async () => {
-        const response = await product.getAllProduct({limit: 1, page: 2});
-        console.log(response);
-        if( response.success) {
-            setDealDaily(response.data[0]);
+        try{
+            const response = await product.getAllProduct({limit: 1, page: 2});
+            console.log(response);
+            if( response.success) {
+                setDealDaily(response.data[0]);
             
+            }
         }
+        catch(error) {
+            console.error(`Đã có lỗi khi gọi api ${error}`);
+        }
+        
     }
 
     /**
      * Hàm gọi api lấy deal daily tại thời điểm hiện tại
      */
     const getCurrentDeal = async () => {
-        const res = await getCurrentDealDaily();
-        console.log(res);
+        try{
+            const res = await getCurrentDealDaily();
+            console.log(res);
+        }
+        catch (error) {
+            console.error(`Đã có lỗi khi gọi api ${error}`);
+        }
     }
 
     // useEffect dùng để gọi api lấy product hiển thị deal daily, chạy mỗi lần render

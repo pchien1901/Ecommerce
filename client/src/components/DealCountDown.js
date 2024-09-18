@@ -25,10 +25,15 @@ const DealCountDown = () => {
      * Hàm gọi api lấy deal daily tại thời điểm hiện tại, có deal sẽ cập nhật deal, set dealDaily và tính thời gian
      */
     const fetchDealAndUpdateCountDown = async () => {
-        const { data: deal } = await getCurrentDealDaily();
-        setDeal(deal);
-        setDealDaily(deal.product);
-        updateCountDown(new Date(deal.endTime) - new Date());
+        try {
+            const { data: deal } = await getCurrentDealDaily();
+            setDeal(deal);
+            setDealDaily(deal.product);
+            updateCountDown(new Date(deal.endTime) - new Date());
+        }
+        catch (error) {
+            console.error(`Đã có lỗi khi gọi api ${error}`);
+        }
     }
 
     /**
