@@ -65,7 +65,7 @@ button.slick-next::before {
     justify-content: center;
     align-items: center;
     transform: translateY(-50%);
-    ocpacity: 0.25;
+    opacity: 0.25;
 }
 
 button.slick-next:hover::before {
@@ -87,7 +87,7 @@ button.slick-prev::before {
     justify-content: center;
     align-items: center;
     transform: translateY(-50%);
-    ocpacity: 0.25;
+    opacity: 0.25;
 }
 
 /* CSS COMPONENT */

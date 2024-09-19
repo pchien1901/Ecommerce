@@ -64,5 +64,42 @@ module.exports = {
       }
     }
   },
-  plugins: [],
+  plugins: [
+    /*
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.before-element::before': {
+          content: '""',
+          position: 'absolute',
+          top: '0',
+          left: '0',
+          width: '0',
+          height: '0',
+          background: '#0000001a',
+          transition: 'all 0.3s ease 0s',
+        },
+        '.after-element::after': {
+          content: '""',
+          position: 'absolute',
+          bottom: '0',
+          right: '0',
+          width: '0',
+          height: '0',
+          background: '#0000001a',
+          transition: 'all 0.3s ease 0s',
+        },
+        '.hover-before:hover::before': {
+          width: '100%',
+          height: '100%',
+        },
+        '.hover-after:hover::after': {
+          width: '100%',
+          height: '100%',
+        },
+      };
+
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    },
+    */
+  ],
 }
