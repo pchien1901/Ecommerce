@@ -10,10 +10,10 @@ import banner2 from "../assets/banner2-home2_2000x_crop_center.avif";
 const MiniBanner = () => {
     return (
         <div className='w-full flex justify-between gap-5 items-center'>
-            <div className='w-[50%] relative before-element after-element hover:before hover:after'>
+            <div className='w-[50%] image-animation'>
                 <img className='w-full object-contain' src={banner2} alt='Banner 1'/>
             </div>
-            <div className='w-[50%] relative before-element after-element hover:before hover:after'>
+            <div className='w-[50%] image-animation'>
                 <img className='w-full object-contain' src={banner1} alt='Banner 2'/>
             </div>
         </div>
