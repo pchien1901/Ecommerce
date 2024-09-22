@@ -9,4 +9,7 @@ export { default as MiniBanner } from './MiniBanner';
 export { default as DealDaily } from './DealDaily';
 export { default as CountDown } from './CountDown';
 export { default as DealCountDown } from './DealCountDown';
+export { default as FeaturedProduct } from './FeaturedProduct';
+export { default as GridImage } from './GridImage';
+
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import product from "../apis/product"
+import { getProduct } from "../apis/product"
 import { Product } from "./index";
 import Slider from 'react-slick';
 import { ProductCard } from "./index";
@@ -26,8 +26,8 @@ const BestSeller = () => {
     useEffect(() => {
         Promise.all(
             [
-                product.getAllProduct({ sort: '-sold', limit: '10'}),
-                product.getAllProduct({ sort: '-createdAt', limit: '10'})
+                getProduct({ sort: '-sold', limit: '10'}),
+                getProduct({ sort: '-createdAt', limit: '10'})
             ]
         )
         .then(response => {

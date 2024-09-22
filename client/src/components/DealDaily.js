@@ -1,6 +1,6 @@
 import React, { useState, useEffect, memo} from 'react';
 import icons from '../ultis/icon';
-import product from '../apis/product';
+import { getProduct } from '../apis/product';
 import { getCurrentDealDaily } from '../apis/dealDaily';
 import img from '../assets/productCommingSoon.png';
 import { formatCurrency, renderStarFromNumber } from '../ultis/helper';
@@ -26,7 +26,7 @@ const DealDaily = () => {
      */
     const fetchDealDaily = async () => {
         try{
-            const response = await product.getAllProduct({limit: 1, page: 2});
+            const response = await getProduct({limit: 1, page: 2});
             console.log(response);
             if( response.success) {
                 setDealDaily(response.data[0]);

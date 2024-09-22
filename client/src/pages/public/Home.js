@@ -1,5 +1,8 @@
 import React from 'react';
-import { Sidebar, Banner, BestSeller, MiniBanner, DealDaily, DealCountDown } from "../../components"
+import { 
+    Sidebar, Banner, BestSeller, MiniBanner, DealDaily, DealCountDown, FeaturedProduct
+    , GridImage
+ } from "../../components"
 
 const Home = () => {
 
@@ -13,6 +16,7 @@ const Home = () => {
                 <Banner />
                 <span>Best seller</span>
             </div>> */}
+            {/* SIDE BAR + BANNER */}
             <div className='mb-[30px] max-w-[1220px] min-h-[430.75px] max-h-[494px] box-border flex'>
                 <div className='w-[24%]'>
                     <Sidebar />
@@ -21,6 +25,7 @@ const Home = () => {
                     <Banner />
                 </div>
             </div>
+            {/* DEAL DAILY + BESTSELLER */}
             <div className='mb-[30px] max-w-[1220px] min-h-[547px] box-border flex'>
                 <div className='w-[24%] '>
                     <DealCountDown/>
@@ -34,7 +39,8 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className='mb-[30px] max-w-[1220px] min-h-[547px] max-h-[598px] box-border flex'>
+            {/* DEAL DAILY + BESTSELLER 2 */}
+            <div className='mb-[30px] max-w-[1220px] min-h-[547px] box-border flex'>
                 <div className='w-[24%] '>
                     <DealDaily/>
                 </div>
@@ -46,6 +52,13 @@ const Home = () => {
                         <MiniBanner />
                     </div>
                 </div>
+            </div>
+            {/* FEATURED PRODUCT */}
+            <div className='mb-[30px] max-w-[1220px] box-border'>
+                <FeaturedProduct />
+            </div>
+            <div className='mb-[30px] max-w-[1220px] min-h-[547px] box-border'>
+                <GridImage />
             </div>
         </div>
     )

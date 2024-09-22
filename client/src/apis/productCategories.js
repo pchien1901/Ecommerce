@@ -13,7 +13,7 @@ import { route } from './api.routes.js';
  * }
  * Author: PMChien (04/08/2024)
  */
-const getAllProductCategories = async () => {
+export const getAllProductCategories = async () => {
     try {
         let response = await axios({ 
             url: route.productCategory.getAllCategories,
@@ -27,8 +27,8 @@ const getAllProductCategories = async () => {
     }
 }
 
-const productCategories = {
-    getAllProductCategories
-}
+// const productCategories = {
+//     getAllProductCategories
+// }
 
-export default productCategories;
+// export default productCategories;

@@ -6,7 +6,7 @@ import axios from "./axios";
  * @param { * } params
  * Author: PMChien(11/08/2024)
  */
-const getAllProduct = (params) => {
+export const getProduct = (params) => {
     return axios({
         url: '/products/',
         method: 'get',
@@ -14,8 +14,8 @@ const getAllProduct = (params) => {
     });
 }
 
-const product = {
-    getAllProduct
-}
+// const product = {
+//     getAllProduct
+// }
 
-export default product;
+// export default product;
