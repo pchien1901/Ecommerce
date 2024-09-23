@@ -29,7 +29,7 @@ const GridImage = () => {
     const banner3 = images.filter(img => img.position === 'A3')[0];
     const banner4 = images.filter(img => img.position === 'A4')[0];
 
-    console.log(banner1);
+    //console.log(banner1);
 
     return (
         <div className='grid grid-cols-4 grid-rows-2 gap-4'>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getProduct } from "../apis/product"
 import { Product } from "./index";
 import Slider from 'react-slick';
-import { ProductCard } from "./index";
+import { ProductCard, ProductSlider } from "./index";
 
 const tabs = [
     { id: 1, name: "Best Seller ", label: 'Hot' },
@@ -67,7 +67,7 @@ const BestSeller = () => {
                 }
             </div>
             <div className='mt-4 max-w-[908px]'>
-                <Slider {...settings}>
+                {/* <Slider {...settings}>
                     {
                         products?.map(el => (
                             <ProductCard 
@@ -78,7 +78,8 @@ const BestSeller = () => {
                         ))
                     }
                    
-                </Slider>
+                </Slider> */}
+                <ProductSlider products={products} tab={tab} />
             </div>
 
         </div>

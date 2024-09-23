@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Login, Home, Public} from './pages/public';
 import path from './ultis/path';
-import { getProductCategories } from './store/asyncAction';
+import { getProductCategories } from './store/app/asyncAction';
 import { useDispatch } from "react-redux";
 
 function App() {

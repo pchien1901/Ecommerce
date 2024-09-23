@@ -36,7 +36,7 @@ const FeaturedProduct = () => {
                                 <img src={product.thumb} alt='true'/>
                             </div>
                             <div className='ml-8'>
-                                <div className='pt-[15px] pb-[6px] truncate w-[190px] font-main text-[16px] font-normal hover:text-main' title={product?.title}>{product?.title}</div>
+                                <div className='pt-[15px] pb-[6px] truncate w-[190px] font-main text-[16px] font-normal hover:text-main cursor-pointer' title={product?.title}>{product?.title}</div>
                                 <div className='flex h-4 mb-[10px]'>{ renderStarFromNumber(product?.totalRatings, 16, 'text-color-20-light' )}</div>
                                 <div className='product__price mb-[10px]'>
                                     <span className='money font-main text-[16px] font-normal mb-[10px]'>

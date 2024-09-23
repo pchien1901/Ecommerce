@@ -11,5 +11,6 @@ export { default as CountDown } from './CountDown';
 export { default as DealCountDown } from './DealCountDown';
 export { default as FeaturedProduct } from './FeaturedProduct';
 export { default as GridImage } from './GridImage';
+export { default as ProductSlider } from './ProductSlider';
 
 
