@@ -4,24 +4,23 @@ import * as actions from "./asyncAction";
 export const productSlice = createSlice({
     name: 'product',
     initialState: {
-        newArrivals : null,
-        bestSeller: null,
+        newArrivals: null,
+        bestSeller: null
     },
     reducers: {
 
     },
     extraReducers: (builder) => {
-        builder.addCase(actions.getProductCategories.pending, (state) => {
-            state.isLoading = true;
+        builder.addCase(actions.getNewArrivals.pending, (state) => {
+            //state.isLoading = true;
         });
-        builder.addCase(actions.getProductCategories.fulfilled, (state, action) => {
-            state.isLoading = false;
+        builder.addCase(actions.getNewArrivals.fulfilled, (state, action) => {
             let { data } = action.payload;
             console.log('data: ', data);
-            state.productCategories = data;
+            state.newArrivals = data;
         });
-        builder.addCase(actions.getProductCategories.rejected, (state, action) => {
-            console.log("actions.getProductCategories.rejected ",action.payload);
+        builder.addCase(actions.getNewArrivals.rejected, (state, action) => {
+            console.log("actions.getNewArrivals.rejected ",action.payload);
         });
     }
 });

@@ -31,7 +31,7 @@ const FeaturedProduct = () => {
             <div className='grid grid-cols-3 grid-rows-3 gap-5'>
                 {
                     products?.map(product => (
-                        <div key={product._id} className='flex border border-basic box-border p-[15px]'>
+                        <div key={product._id} className='flex border border-basic box-border p-[15px] cursor-pointer'>
                             <div className='w-[85px] object-contain'>
                                 <img src={product.thumb} alt='true'/>
                             </div>
