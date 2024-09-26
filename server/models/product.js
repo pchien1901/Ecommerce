@@ -34,7 +34,7 @@ var productSchema = new mongoose.Schema(
     // category - hạng mục
     category: {
       type: mongoose.Types.ObjectId, // khóa ngoại tới bảng khác
-      ref: "Category", // ref - liên kết với bảng nào
+      ref: "ProductCategory", // ref - liên kết với bảng nào
     },
     // quantity - số lượng còn
     quantity: {
