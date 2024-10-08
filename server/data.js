@@ -1,5 +1,5 @@
 const products = require("./data/product.detail.json");
-const categoryAndBrand = require("./category.json");
+const categoryAndBrand = require("./data/category.json");
 const fs = require('fs');
 
 /**
@@ -59,5 +59,47 @@ const getBrand = (categoryAndBrand) => {
         }
     });
 }
+
+const writeBrandContainProductCategories = (categoryAndBrand) => {
+    try {
+        let brandContainProductCategories = {};
+        for(let cateBrand of categoryAndBrand) {
+            for(let brand of cateBrand.brand) {
+                if(!brandContainProductCategories[brand]) {
+                    brandContainProductCategories[brand] = new Set();
+                }
+            }
+        }
+
+        console.log(brandContainProductCategories);
+        
+        for(let cateBrand of categoryAndBrand) {
+            for(let brand of cateBrand.brand) {
+                brandContainProductCategories[brand].add(cateBrand.category);
+            }
+        }
+
+        let result = Object.keys(brandContainProductCategories).map(brand => {
+            return {
+                brand: brand,
+                categories: Array.from(brandContainProductCategories[brand])
+            }
+        })
+
+        fs.writeFile('brandWithCategory.json', JSON.stringify(result), (err) => {
+            if(err) {
+                console.error(`Ghi file thất bại ${err}`);
+            }
+            else {
+                console.log('Ghi file thành công')
+            }
+        });
+        
+    } catch (error) {
+        console.error(`Đã xảy ra lỗi: ${error}`);
+    }
+}
+
 //getCategory(products);
-getBrand(categoryAndBrand);
+//getBrand(categoryAndBrand);
+writeBrandContainProductCategories(categoryAndBrand);

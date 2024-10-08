@@ -9,7 +9,8 @@ var brandSchema = new mongoose.Schema({
         unique:true,
         index:true,
     },
-    categories: [{
+    // product category mà brand có
+    category: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'ProductCategory'
     }]

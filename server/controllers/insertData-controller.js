@@ -4,6 +4,7 @@ const ProductCategory = require("../models/productCategory");
 const asyncHandler = require("express-async-handler");
 const products = require("../data/product.detail.json");
 const brands = require("../data/brand.json");
+const brandsWithPC = require("../data/brandWithCategory.json");
 const categories = require("../data/category.json");
 const slugify = require("slugify");
 
@@ -14,6 +15,15 @@ const slugify = require("slugify");
  */
 const promiseInsertProduct = async (product) => {
     try {
+        const { brand: brandTitle, category: productCategoryTitle } = product;
+        //let brands = new Set();
+        let categories = new Set();
+
+        let brandInDb = await Brand.findOne({title: brandTitle});
+
+        let productCategoryInDb = await ProductCategory.findOne({ title: productCategoryTitle });
+
+
         let productInDb = await Product.create({
             title: product?.name,
             description: product?.description,
@@ -21,7 +31,9 @@ const promiseInsertProduct = async (product) => {
             quantity: Math.round(Math.random() * 1000),
             sold: Math.round(Math.random() * 100),
             thumb: product?.thumb,
-            images: product?.images
+            images: product?.images,
+            brand: brandInDb._id,
+            category: productCategoryInDb._id
         });
     
         if(productInDb) {
@@ -67,10 +79,30 @@ const promiseInsertBrand = async (brandTitle) => {
         let brandInDb = await Brand.create({
             title: brandTitle
         });
+        //
+
         return brandInDb;
     } catch (error) {
         console.error(`Đã xảy ra lỗi ${error}`);
         throw error;
+    }
+}
+
+const promiseInsertBrandWithProductCategory = async (brandObj) => {
+    try{
+        const { brand, categories } = brandObj;
+        let productCategory = new Set();
+        for(let pcTitle of categories) {
+            let pc = await ProductCategory.findOne({ title: pcTitle });
+            if(pc) {
+                productCategory.add(pc._id);
+            }
+        }
+        let brandInDb = await Brand.create({ title: brand, category: Array.from(productCategory)});
+        return brandInDb;
+    }
+    catch (e) {
+        console.error(`Đã xảy ra lỗi tại hàm promiseInsertBrandWithProductCategory ${e}`);
     }
 }
 
@@ -80,8 +112,11 @@ const promiseInsertBrand = async (brandTitle) => {
  */
 const insertBrand = asyncHandler(async (req, res) => {
     let promises = [];
-    for(let brandTitle of brands) {
-        promises.push(promiseInsertBrand(brandTitle));
+    // for(let brandTitle of brands) {
+    //     promises.push(promiseInsertBrand(brandTitle));
+    // }
+    for(let item of brandsWithPC) {
+        promises.push(promiseInsertBrandWithProductCategory(item));
     }
     await Promise.all(promises);
     return res.json("Done");

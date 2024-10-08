@@ -23,8 +23,10 @@ var productSchema = new mongoose.Schema(
     },
     // Brand - nhãn hiệu
     brand: {
-      type: String,
+      // type: String,
       //required: true,
+      type: mongoose.Types.ObjectId,
+      ref: "Brand"
     },
     // price - giá
     price: {

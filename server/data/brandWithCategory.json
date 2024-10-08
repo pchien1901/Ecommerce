@@ -1,0 +1,159 @@
+[
+    {
+        "brand": "XIAOMI",
+        "categories": [
+            "Smartphone",
+            "Tablet"
+        ]
+    },
+    {
+        "brand": "VIVO",
+        "categories": [
+            "Smartphone"
+        ]
+    },
+    {
+        "brand": "SONY",
+        "categories": [
+            "Smartphone",
+            "Tablet"
+        ]
+    },
+    {
+        "brand": "SAMSUNG",
+        "categories": [
+            "Smartphone",
+            "Tablet",
+            "Camera",
+            "Printer",
+            "Speaker",
+            "Accessories",
+            "Television"
+        ]
+    },
+    {
+        "brand": "LG",
+        "categories": [
+            "Smartphone",
+            "Tablet"
+        ]
+    },
+    {
+        "brand": "IPHONE",
+        "categories": [
+            "Smartphone"
+        ]
+    },
+    {
+        "brand": "HTC",
+        "categories": [
+            "Smartphone"
+        ]
+    },
+    {
+        "brand": "GOOGLE",
+        "categories": [
+            "Smartphone"
+        ]
+    },
+    {
+        "brand": "LENOVO",
+        "categories": [
+            "Tablet",
+            "Laptop"
+        ]
+    },
+    {
+        "brand": "HUAWEI",
+        "categories": [
+            "Tablet"
+        ]
+    },
+    {
+        "brand": "ASUS",
+        "categories": [
+            "Tablet",
+            "Laptop"
+        ]
+    },
+    {
+        "brand": "APPLE",
+        "categories": [
+            "Tablet",
+            "Laptop",
+            "Camera",
+            "Printer",
+            "Speaker",
+            "Accessories",
+            "Television"
+        ]
+    },
+    {
+        "brand": "HP",
+        "categories": [
+            "Laptop"
+        ]
+    },
+    {
+        "brand": "DELL",
+        "categories": [
+            "Laptop"
+        ]
+    },
+    {
+        "brand": "ACER",
+        "categories": [
+            "Laptop"
+        ]
+    },
+    {
+        "brand": "USB",
+        "categories": [
+            "Camera",
+            "Printer",
+            "Speaker",
+            "Accessories",
+            "Television"
+        ]
+    },
+    {
+        "brand": "SENNHEISER",
+        "categories": [
+            "Camera",
+            "Printer",
+            "Speaker",
+            "Accessories",
+            "Television"
+        ]
+    },
+    {
+        "brand": "MOTOROLA",
+        "categories": [
+            "Camera",
+            "Printer",
+            "Speaker",
+            "Accessories",
+            "Television"
+        ]
+    },
+    {
+        "brand": "LOGITECH",
+        "categories": [
+            "Camera",
+            "Printer",
+            "Speaker",
+            "Accessories",
+            "Television"
+        ]
+    },
+    {
+        "brand": "JBL",
+        "categories": [
+            "Camera",
+            "Printer",
+            "Speaker",
+            "Accessories",
+            "Television"
+        ]
+    }
+]
