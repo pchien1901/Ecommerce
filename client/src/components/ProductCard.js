@@ -45,16 +45,18 @@ const label = {
             "slug": "usb-sandisk-66a534a35b00881617261da5"
  * 
  *         } 
+ *      - label : Nhãn để hiển thị tag sản phẩm
+ *      - size: Kích thước sản phẩm mặc định là md
  * @returns 
  */
-const ProductCard = ({ productData, label }) => {
+const ProductCard = ({ productData, label, size = 'md' }) => {
     console.log(label);
     const { PiShootingStarFill, PiShootingStarLight, FaEye, LuMenu, IoHeart, TbShoppingBagPlus } = icons;
     return (
-        <div className='min-w-[230px] max-w-[295px] pl-[20px]'>
-            <div className='min-w-[225px] max-w-[275px] border border-basic p-[15px] mb-[20px] group'>
+        <div className={size === 'md' ? `min-w-[230px] max-w-[295px] pl-[20px]` : `pl-[20px]`}>
+            <div className={size === 'md' ? 'min-w-[225px] max-w-[275px] border border-basic p-[15px] mb-[20px] group' : ' border border-basic p-[15px] mb-[20px] group'}>
                 <div className='product__image relative'>
-                    <img src={ productData?.thumb || img} alt='true' className='w-full min-h-[198px] max-h-[243px] object-contain'/>
+                    <img src={ productData?.thumb || img} alt='true' className={size ===  'md' ? 'w-full min-h-[198px] max-h-[243px] object-contain' : 'w-full min-h-[343px] max-h-[343px] object-contain'}/>
                     <div className='product__label absolute top-[-10px] left-[-10px]'>
                         <div className='label__name box-border'>
                             <span className={`label w-[50px] h-[25px] pt-[6px] pb-[5px] bg-color-50-light text-white text-[10px] font-semibold text-center ${label ? "inline-block" : "hidden"}`}>

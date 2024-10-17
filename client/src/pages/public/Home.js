@@ -1,7 +1,8 @@
 import React from 'react';
 import { 
     Sidebar, Banner, BestSeller, MiniBanner, DealDaily, DealCountDown, FeaturedProduct
-    , GridImage
+    , GridImage,
+    NewArrivalsByCategory
  } from "../../components"
 
 const Home = () => {
@@ -57,8 +58,13 @@ const Home = () => {
             <div className='mb-[30px] max-w-[1220px] box-border'>
                 <FeaturedProduct />
             </div>
+            {/* GRID IMAGE */}
             <div className='mb-[30px] max-w-[1220px] min-h-[547px] box-border'>
                 <GridImage />
+            </div>
+            {/* NEWARRIVALSBYCATEGORY */}
+            <div className='mb-[30px] max-w-[1220px] min-h-[547px] box-border'>
+                <NewArrivalsByCategory />
             </div>
         </div>
     )

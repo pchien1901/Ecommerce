@@ -79,6 +79,7 @@ const getProductById = async (id) => {
 const getProducts = async (req) => {
   // copy query từ đường dẫn
   let queries = { ... req.query};
+//  console.log('Query lọc điều kiện: ', queries);
   
   // Tách các trường đặc biệt ra khỏi query
   const excludeFields = ['limit', 'sort', 'page', 'fields'];
@@ -128,9 +129,11 @@ const getProducts = async (req) => {
 
   queryCommand = queryCommand.skip(skip).limit(limit);
 
+  //console.log(queryCommand);
   // execute query
   let result = await queryCommand.exec()
     .then( async (response) => {
+      //console.log(formatedQueries);
       let counts = await Product.find(formatedQueries).countDocuments();
       return {
         success: true,

@@ -14,7 +14,7 @@ import { getProduct } from "../../apis/product";
 export const getNewArrivals = createAsyncThunk(
     'product/getNewArrivals', 
     async (data, { rejectWithValue }) => {
-        const response = await getProduct({ sort: -createdAt , limit: 10});
+        const response = await getProduct({ sort: '-createdAt' , limit: 10});
         console.log(response);
         if(!response.success) {
             console.log("reject: ", response.success);
@@ -36,7 +36,7 @@ export const getNewArrivals = createAsyncThunk(
 export const getBestSellers = createAsyncThunk(
     'product/getBestSellers', 
     async (data, { rejectWithValue }) => {
-        const response = await getProduct({ sort: -sold , limit: 10});
+        const response = await getProduct({ sort: '-sold' , limit: 10});
         console.log(response);
         if(!response.success) {
             console.log("reject: ", response.success);

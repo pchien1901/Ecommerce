@@ -20,7 +20,14 @@ const cookieParser = require("cookie-parser");
 
 if(cluster.isMaster) {
   // Cân bằng tải cho các worker CPU
-  const numCPUs = os.cpus().length; // Lấy số lượng core CPU
+  let numCPUs = os.cpus().length; // Lấy số lượng core CPU
+  if(numCPUs >= 2) {
+    numCPUs = 2;
+  }
+  else
+  {
+    numCPUs = 1;
+  }
   console.log(`Master ${process.pid} is running`);
   // Tạo một worker cho mỗi core CPU
   for(let i = 0; i < numCPUs; i++) {
