@@ -2,12 +2,14 @@ import React from 'react';
 import { 
     Sidebar, Banner, BestSeller, MiniBanner, DealDaily, DealCountDown, FeaturedProduct
     , GridImage,
-    NewArrivalsByCategory
+    NewArrivalsByCategory,
+    HotCollections
  } from "../../components"
 
 const Home = () => {
 
     return (
+      <div className='w-[100%]'>
         <div className='w-main'>
             {/* <<div className='flex flex-col gap-5 w-[24%] flex-auto border'>
                 <Sidebar />
@@ -66,7 +68,13 @@ const Home = () => {
             <div className='mb-[30px] max-w-[1220px] min-h-[547px] box-border'>
                 <NewArrivalsByCategory />
             </div>
+            {/* HOT COLLECTIONS */}
+            <div className='mb-[30px] max-w-[1220px] h-[580px] box-border'>
+                <HotCollections />
+            </div>
         </div>
+      </div>
+        
     )
 }
 

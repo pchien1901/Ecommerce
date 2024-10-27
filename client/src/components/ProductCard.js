@@ -3,6 +3,8 @@ import img from '../assets/productCommingSoon.png'
 import icons from '../ultis/icon';
 import { SelectOption } from './index';
 import { formatCurrency } from '../ultis/helper';
+import { Link } from 'react-router-dom';
+import path from '../ultis/path.js';
 const label = {
 
 }
@@ -50,9 +52,10 @@ const label = {
  * @returns 
  */
 const ProductCard = ({ productData, label, size = 'md' }) => {
-    console.log(label);
+    //console.log(label);
     const { PiShootingStarFill, PiShootingStarLight, FaEye, LuMenu, IoHeart, TbShoppingBagPlus } = icons;
     return (
+      <Link to={`/${path.PRODUCT_DETAIL}/${productData._id}/${productData.title}`}>
         <div className={size === 'md' ? `min-w-[230px] max-w-[295px] pl-[20px]` : `pl-[20px]`}>
             <div className={size === 'md' ? 'min-w-[225px] max-w-[275px] border border-basic p-[15px] mb-[20px] group' : ' border border-basic p-[15px] mb-[20px] group'}>
                 <div className='product__image relative'>
@@ -100,6 +103,8 @@ const ProductCard = ({ productData, label, size = 'md' }) => {
                 </div>
             </div>
         </div>
+      </Link>
+
     )
 }
 
