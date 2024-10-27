@@ -1,6 +1,7 @@
 [
     {
         "category": "Smartphone",
+        "image":"https://digital-world-2.myshopify.com/cdn/shop/files/mobile-devices_300x.jpg?v=1613166682",
         "brand": [
             "XIAOMI",
             "VIVO",
@@ -14,6 +15,7 @@
     },
     {
         "category": "Tablet",
+        "image":"https://digital-world-2.myshopify.com/cdn/shop/files/pc-1_300x.jpg?v=1613166682",
         "brand": [
             "XIAOMI",
             "SONY",
@@ -27,6 +29,7 @@
     },
     {
         "category": "Laptop",
+        "image":"https://digital-world-2.myshopify.com/cdn/shop/files/laptop_300x.jpg?v=1613166811",
         "brand": [
             "LENOVO",
             "HP",
@@ -38,6 +41,7 @@
     },
     {
         "category": "Camera",
+        "image":"https://hikvision.vn/wp-content/uploads/2023/12/IDS-2SH6B6G0-IZS.jpg",
         "brand": [
             "USB",
             "SENNHEISER",
@@ -50,6 +54,7 @@
     },
     {
         "category": "Printer",
+        "image":"https://digital-world-2.myshopify.com/cdn/shop/files/printer_300x.jpg?v=1613166810",
         "brand": [
             "USB",
             "SENNHEISER",
@@ -62,6 +67,7 @@
     },
     {
         "category": "Speaker",
+        "image":"https://www.decibelaudio.com/cdn/shop/products/A5plus_B_front_grande.jpg?v=1428179742",
         "brand": [
             "USB",
             "SENNHEISER",
@@ -74,6 +80,7 @@
     },
     {
         "category": "Accessories",
+        "image":"https://digital-world-2.myshopify.com/cdn/shop/files/headphone_8467ba67-70c7-4977-b57e-8847d56549c6_300x.jpg?v=1613166811",
         "brand": [
             "SAMSUNG",
             "MOTOROLA",
@@ -86,6 +93,7 @@
     },
     {
         "category": "Television",
+        "image":"https://digital-world-2.myshopify.com/cdn/shop/files/television_300x.jpg?v=1613166810",
         "brand": [
             "USB",
             "SENNHEISER",

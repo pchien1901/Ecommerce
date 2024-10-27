@@ -53,7 +53,7 @@ const createBrand = async (brand) => {
  *  Author: PMChien (07/05/2024)
  */
 const getBrandById = async (brandId) => {
-  let brand = await Brand.findById(brandId);
+  let brand = await Brand.findById(brandId).populate('category');
   return {
     success: brand ? true : false,
     code: brand ? 200 : 404,
@@ -115,7 +115,7 @@ const getBrands = async (req) => {
   let page = req.query.page * 1 || 1;
   let limit = req.query.limit * 1 || process.env.LIMIT_RECORDS;
   let skip = (page - 1) * limit;
-  queryCommand = queryCommand.skip(skip).limit(limit);
+  queryCommand = queryCommand.skip(skip).limit(limit).populate('category');
 
   // execute query
   const result = await queryCommand.exec()
