@@ -6,7 +6,8 @@ const Public = () => {
     return (
       <>
         <TopHeader />
-        <div className='w-main block my-0 mx-auto px-[20px] box-border'>
+        {/* <div className='w-main block my-0 mx-auto px-[20px] box-border'> */}
+        <div className='w-full flex flex-col items-center px-[20px] box-border'>
             <Header />
             <Navigation />
             <div className=''>

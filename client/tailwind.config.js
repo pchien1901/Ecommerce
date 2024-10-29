@@ -43,6 +43,8 @@ module.exports = {
         'color-60-dark': '#5f1414',
         'color-70-light': '#fac1c1',
         'color-70-dark': '#470f0f',
+        'footer-bg': '#191919',
+        'footer-text-color': '#b7b7b7',
       },
       borderColor: {
         basic: '#ebebeb'

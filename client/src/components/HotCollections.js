@@ -33,7 +33,7 @@ const HotCollections = () => {
                 <div className="mb-[5px] font-semibold">{category.title}</div>
                 <ul className="h-[150px] overflow-auto home__sidebar">
                   {category?.brands?.map((el) => (
-                    <li key={el._id} className="mb-[5px] flex items-center hover:text-main active:text-color-40-dark cursor-pointer">
+                    <li key={el._id} className="mb-[5px] flex items-center text-pure-black text-opacity-70 hover:text-main active:text-color-40-dark cursor-pointer">
                       <span>
                         <FaAngleRight />
                       </span>

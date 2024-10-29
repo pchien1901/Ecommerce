@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { 
     Sidebar, Banner, BestSeller, MiniBanner, DealDaily, DealCountDown, FeaturedProduct
     , GridImage,
@@ -78,4 +78,4 @@ const Home = () => {
     )
 }
 
-export default Home;
+export default memo(Home);
