@@ -9,7 +9,7 @@ import {
 const Home = () => {
 
     return (
-      <div className='w-[100%]'>
+      <div className=''>
         <div className='w-main'>
             {/* <<div className='flex flex-col gap-5 w-[24%] flex-auto border'>
                 <Sidebar />

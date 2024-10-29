@@ -14,6 +14,10 @@ export { default as GridImage } from './GridImage';
 export { default as ProductSlider } from './ProductSlider';
 export { default as NewArrivalsByCategory } from './NewArrivalsByCategory';
 export { default as HotCollections } from './HotCollections.js';
+export { default as Footer } from './Footer.js';
+export { default as TopHeader } from './TopHeader.js';
+
+
 
 
 

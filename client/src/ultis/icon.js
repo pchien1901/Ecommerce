@@ -5,7 +5,7 @@ import { CiUser } from "react-icons/ci";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { PiShootingStarFill, PiShootingStarLight  } from "react-icons/pi";
-import { FaEye, FaAngleRight } from "react-icons/fa";
+import { FaEye, FaAngleRight, FaFacebookF, FaTwitter, FaInstagram, FaGoogle, FaPinterest } from "react-icons/fa";
 import { LuMenu } from "react-icons/lu";
 import { IoHeart } from "react-icons/io5";
 import { TbShoppingBagPlus } from "react-icons/tb";
@@ -28,7 +28,12 @@ const icons = {
     LuMenu,
     IoHeart,
     TbShoppingBagPlus,
-    FaAngleRight
+    FaAngleRight,
+    FaFacebookF,
+    FaTwitter, 
+    FaInstagram, 
+    FaGoogle,
+    FaPinterest
 }
 
 export default icons;
