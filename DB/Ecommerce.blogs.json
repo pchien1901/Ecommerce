@@ -1,0 +1,118 @@
+[{
+  "_id": {
+    "$oid": "6634a0b5f709f84a2ef1cd37"
+  },
+  "title": "Đây là một vài viết về máy tính",
+  "description": "Laptop Dell - một sản phẩm cũng đến từ Hoa Kỳ, có lịch sử lâu đời nên người dùng đặc biệt yêu thích dòng sản phẩm này. Máy có kiểu dáng đẹp, bắt mắt, linh kiện tốt và khả năng hoạt động cực kỳ bền bỉ.",
+  "category": "Máy tính",
+  "numberViews": 0,
+  "isLiked": false,
+  "isDisliked": false,
+  "likes": [],
+  "dislikes": [],
+  "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.one.com%2Fen%2Fonline-marketing%2Fwhat-is-a-blog&psig=AOvVaw3sdcBj9iaq97iw6FaI4A0U&ust=1714787395742000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKj5qvuu8IUDFQAAAAAdAAAAABAN",
+  "author": "Admin",
+  "createdAt": {
+    "$date": "2024-05-03T08:30:45.947Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-03T08:30:45.947Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6634a15ef709f84a2ef1cd39"
+  },
+  "title": "Đánh giá iPhone 13 thường sau gần 2 năm có còn đáng mua không?",
+  "description": "Một trong những ưu điểm lớn nhất khi đánh giá iPhone 13 hiện nay là giá. Bạn có thể tìm thấy nó với mức giá rẻ hơn rất nhiều so với thời điểm ra mắt. Nếu bạn đang tìm kiếm một chiếc điện thoại thông minh mạnh mẽ với mức giá hợp lý, iPhone 13 là một sự lựa chọn tốt trong phân khúc giá hiện tại.\n\nHiện dòng sản phẩm iPhone 13 đang được bán với mức giá siêu khuyến mãi độc quyền RẺ HƠN CÁC LOẠI RẺ cực hấp dẫn tại Di Động Việt chỉ còn 15.790.000 VNĐ. Đây là mức giá tốt nhất của dòng iPhone 13 từ trước đến nay trong suốt 2 năm qua.",
+  "category": "Điện thoại",
+  "numberViews": 0,
+  "isLiked": false,
+  "isDisliked": false,
+  "likes": [],
+  "dislikes": [],
+  "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.one.com%2Fen%2Fonline-marketing%2Fwhat-is-a-blog&psig=AOvVaw3sdcBj9iaq97iw6FaI4A0U&ust=1714787395742000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKj5qvuu8IUDFQAAAAAdAAAAABAN",
+  "author": "Admin",
+  "createdAt": {
+    "$date": "2024-05-03T08:33:34.244Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-03T08:33:34.244Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6634a98aa4952265a58bffce"
+  },
+  "title": "Test thôi",
+  "description": "Đơn giản là test thôi",
+  "category": "Test",
+  "numberViews": 0,
+  "isLiked": false,
+  "isDisliked": false,
+  "likes": [],
+  "dislikes": [],
+  "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.one.com%2Fen%2Fonline-marketing%2Fwhat-is-a-blog&psig=AOvVaw3sdcBj9iaq97iw6FaI4A0U&ust=1714787395742000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKj5qvuu8IUDFQAAAAAdAAAAABAN",
+  "author": "Admin",
+  "createdAt": {
+    "$date": "2024-05-03T09:08:26.054Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-03T09:08:26.054Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6634a9a1a4952265a58bffd0"
+  },
+  "title": "test update có thành công không ?",
+  "description": "test update có thành công không ?",
+  "category": "Test",
+  "numberViews": 0,
+  "isLiked": false,
+  "isDisliked": false,
+  "likes": [],
+  "dislikes": [],
+  "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.one.com%2Fen%2Fonline-marketing%2Fwhat-is-a-blog&psig=AOvVaw3sdcBj9iaq97iw6FaI4A0U&ust=1714787395742000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKj5qvuu8IUDFQAAAAAdAAAAABAN",
+  "author": "Admin",
+  "createdAt": {
+    "$date": "2024-05-03T09:08:49.797Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-03T09:11:02.419Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6639185af2b81e21bd08a076"
+  },
+  "title": "Test create blog sao có trường id",
+  "description": "Test create blog sao có trường id",
+  "category": "Test",
+  "numberViews": 2,
+  "isLiked": false,
+  "isDisliked": false,
+  "likes": [
+    {
+      "$oid": "6610be2eb885f7d96eeda4ba"
+    }
+  ],
+  "dislikes": [
+    {
+      "$oid": "6628e59b03c35e6f6b37d110"
+    }
+  ],
+  "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.one.com%2Fen%2Fonline-marketing%2Fwhat-is-a-blog&psig=AOvVaw3sdcBj9iaq97iw6FaI4A0U&ust=1714787395742000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKj5qvuu8IUDFQAAAAAdAAAAABAN",
+  "author": "Admin",
+  "createdAt": {
+    "$date": "2024-05-06T17:50:18.303Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-07T05:12:50.518Z"
+  },
+  "__v": 11
+}]

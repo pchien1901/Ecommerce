@@ -1,0 +1,299 @@
+[{
+  "_id": {
+    "$oid": "671df7a3f25e97bcf4c0e526"
+  },
+  "title": "Smartphone",
+  "brands": [
+    {
+      "$oid": "671df6993e7fc157289b5ae5"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5ae3"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5ac7"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5ade"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b0e"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5aed"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5ad6"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5aeb"
+    }
+  ],
+  "image": "https://digital-world-2.myshopify.com/cdn/shop/files/mobile-devices_300x.jpg?v=1613166682",
+  "createdAt": {
+    "$date": "2024-10-27T08:19:47.282Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-27T08:19:47.338Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "671df7a3f25e97bcf4c0e527"
+  },
+  "title": "Tablet",
+  "brands": [
+    {
+      "$oid": "671df6993e7fc157289b5b10"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5ae0"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5ad9"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5aef"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5ade"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b0e"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5aed"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5aeb"
+    }
+  ],
+  "image": "https://digital-world-2.myshopify.com/cdn/shop/files/pc-1_300x.jpg?v=1613166682",
+  "createdAt": {
+    "$date": "2024-10-27T08:19:47.282Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-27T08:19:47.340Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "671df7a3f25e97bcf4c0e528"
+  },
+  "title": "Laptop",
+  "brands": [
+    {
+      "$oid": "671df6993e7fc157289b5acf"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b10"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5ae0"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5acd"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5acb"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5aef"
+    }
+  ],
+  "image": "https://digital-world-2.myshopify.com/cdn/shop/files/laptop_300x.jpg?v=1613166811",
+  "createdAt": {
+    "$date": "2024-10-27T08:19:47.282Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-27T08:19:47.319Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "671df7a3f25e97bcf4c0e529"
+  },
+  "title": "Camera",
+  "brands": [
+    {
+      "$oid": "671df6993e7fc157289b5b10"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b08"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5aff"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b0a"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b0e"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b03"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b01"
+    }
+  ],
+  "image": "https://hikvision.vn/wp-content/uploads/2023/12/IDS-2SH6B6G0-IZS.jpg",
+  "createdAt": {
+    "$date": "2024-10-27T08:19:47.282Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-27T08:19:47.325Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "671df7a3f25e97bcf4c0e52c"
+  },
+  "title": "Accessories",
+  "brands": [
+    {
+      "$oid": "671df6993e7fc157289b5b10"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b08"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5aff"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b0a"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b0e"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b03"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b01"
+    }
+  ],
+  "image": "https://digital-world-2.myshopify.com/cdn/shop/files/headphone_8467ba67-70c7-4977-b57e-8847d56549c6_300x.jpg?v=1613166811",
+  "createdAt": {
+    "$date": "2024-10-27T08:19:47.283Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-27T08:19:47.329Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "671df7a3f25e97bcf4c0e52d"
+  },
+  "title": "Television",
+  "brands": [
+    {
+      "$oid": "671df6993e7fc157289b5b10"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b08"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5aff"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b0a"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b0e"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b03"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b01"
+    }
+  ],
+  "image": "https://digital-world-2.myshopify.com/cdn/shop/files/television_300x.jpg?v=1613166810",
+  "createdAt": {
+    "$date": "2024-10-27T08:19:47.283Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-27T08:19:47.333Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "671df7a3f25e97bcf4c0e52a"
+  },
+  "title": "Printer",
+  "brands": [
+    {
+      "$oid": "671df6993e7fc157289b5b10"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b08"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5aff"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b0a"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b0e"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b03"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b01"
+    }
+  ],
+  "image": "https://digital-world-2.myshopify.com/cdn/shop/files/printer_300x.jpg?v=1613166810",
+  "createdAt": {
+    "$date": "2024-10-27T08:19:47.283Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-27T08:19:47.348Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "671df7a3f25e97bcf4c0e52b"
+  },
+  "title": "Speaker",
+  "brands": [
+    {
+      "$oid": "671df6993e7fc157289b5b10"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b08"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5aff"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b0a"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b0e"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b03"
+    },
+    {
+      "$oid": "671df6993e7fc157289b5b01"
+    }
+  ],
+  "image": "https://www.decibelaudio.com/cdn/shop/products/A5plus_B_front_grande.jpg?v=1428179742",
+  "createdAt": {
+    "$date": "2024-10-27T08:19:47.283Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-27T08:19:47.351Z"
+  },
+  "__v": 1
+}]

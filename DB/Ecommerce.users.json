@@ -1,0 +1,133 @@
+[{
+  "_id": {
+    "$oid": "660d6d64c994afd6157ec8ff"
+  },
+  "firstName": "Minh",
+  "lastName": "Phạm",
+  "email": "user@gmail.com",
+  "mobile": "12345678",
+  "password": "$2b$10$sXyUkt0iuEEEh53KjOE57.GcawSDBEFSFP9za40CbSNXGEI313CJO",
+  "role": "user",
+  "cart": [],
+  "address": [],
+  "wishList": [],
+  "isBlocked": false,
+  "createdAt": {
+    "$date": "2024-04-03T14:53:24.432Z"
+  },
+  "updatedAt": {
+    "$date": "2024-04-23T17:58:52.382Z"
+  },
+  "__v": 0,
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjBkNmQ2NGM5OTRhZmQ2MTU3ZWM4ZmYiLCJpYXQiOjE3MTM4OTUxMzIsImV4cCI6MTcxMzkwMjMzMn0.KAmIcD2ACrnBsWNe3ob74OrXyijLYGCz2A_PcNUe0ts"
+},
+{
+  "_id": {
+    "$oid": "6610be2eb885f7d96eeda4ba"
+  },
+  "firstName": "test with admin",
+  "lastName": "Phạm",
+  "email": "phamminhchien1901@gmail.com",
+  "mobile": "12345608",
+  "password": "$2b$10$kuAHzvkJu8oGKW0v5TVMOOc1GfKB6h3ScXBi2Y5EfbApJq5tSPkLS",
+  "role": "user",
+  "cart": [
+    {
+      "product": {
+        "$oid": "662a772822a01d630d386f7d"
+      },
+      "quantity": 1,
+      "color": "Black",
+      "_id": {
+        "$oid": "665062ed00fa982211aa78f4"
+      }
+    },
+    {
+      "product": {
+        "$oid": "662a772822a01d630d386f7d"
+      },
+      "quantity": 6,
+      "color": "Red",
+      "_id": {
+        "$oid": "66506554d8ad6b152c6f1250"
+      }
+    },
+    {
+      "product": {
+        "$oid": "6631ffccd436ee68fa4c38c5"
+      },
+      "quantity": 2,
+      "color": "Black",
+      "_id": {
+        "$oid": "6667b8bd81441077f8ee8998"
+      }
+    },
+    {
+      "product": {
+        "$oid": "6631ffccd436ee68fa4c38c5"
+      },
+      "quantity": 3,
+      "color": "Gray",
+      "_id": {
+        "$oid": "6667b8e381441077f8ee899e"
+      }
+    }
+  ],
+  "address": [],
+  "wishList": [],
+  "isBlocked": false,
+  "createdAt": {
+    "$date": "2024-04-06T03:14:54.830Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-11T03:15:11.561Z"
+  },
+  "__v": 6,
+  "passwordChangedAt": "1713895231254",
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjEwYmUyZWI4ODVmN2Q5NmVlZGE0YmEiLCJpYXQiOjE3MTgwNzU3MTEsImV4cCI6MTcxODA4MjkxMX0.RLGC7fjDFS57iTVtLgrWSvezYIwlKLJ2fE_w3p9CETc"
+},
+{
+  "_id": {
+    "$oid": "6628e59b03c35e6f6b37d110"
+  },
+  "firstName": "Minh",
+  "lastName": "Phạm",
+  "email": "phamminhchien.forwork@gmail.com",
+  "mobile": "0339449990",
+  "password": "$2b$10$pDUJsEIKA0wGdRSywMug8e.c6C0yrnmvAJlgCdSWnqlfll74HEKue",
+  "role": "admin",
+  "cart": [],
+  "address": [],
+  "wishList": [],
+  "isBlocked": false,
+  "createdAt": {
+    "$date": "2024-04-24T10:57:31.433Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-15T12:43:54.733Z"
+  },
+  "__v": 0,
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI4ZTU5YjAzYzM1ZTZmNmIzN2QxMTAiLCJpYXQiOjE3MTU3NzcwMzQsImV4cCI6MTcxNTc4NDIzNH0.McBMk13KOGYXg_KoJ-aT4Z3OLM3DSB34tA-gslys8EY"
+},
+{
+  "_id": {
+    "$oid": "662a317a6f7f8b600ff19423"
+  },
+  "firstName": "A",
+  "lastName": "B",
+  "email": "testregister@gmail.com",
+  "mobile": "0123445678",
+  "password": "$2b$10$qawcvUXix2mNNyHh0Aa5rO3QxUOpLrKYJ2FF.a/en78y2OMQh94mO",
+  "role": "user",
+  "cart": [],
+  "address": [],
+  "wishList": [],
+  "isBlocked": false,
+  "createdAt": {
+    "$date": "2024-04-25T10:33:30.687Z"
+  },
+  "updatedAt": {
+    "$date": "2024-04-25T10:33:30.687Z"
+  },
+  "__v": 0
+}]

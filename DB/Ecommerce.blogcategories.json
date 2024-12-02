@@ -1,0 +1,78 @@
+[{
+  "_id": {
+    "$oid": "66342ad9c23c0faa0b8d05ad"
+  },
+  "title": "Bài viết về điện thoại",
+  "createdAt": {
+    "$date": "2024-05-03T00:07:53.928Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-03T00:07:53.928Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66342ae5c23c0faa0b8d05b0"
+  },
+  "title": "Bài viết về máy tính",
+  "createdAt": {
+    "$date": "2024-05-03T00:08:05.678Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-03T00:08:05.678Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66342aebc23c0faa0b8d05b3"
+  },
+  "title": "Bài viết về máy tính bảng",
+  "createdAt": {
+    "$date": "2024-05-03T00:08:11.837Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-03T00:08:11.837Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66342afec23c0faa0b8d05b6"
+  },
+  "title": "Bài viết về đồng hồ thông minh",
+  "createdAt": {
+    "$date": "2024-05-03T00:08:30.710Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-03T00:08:30.710Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66342d84cf4e6482ded5bd59"
+  },
+  "title": "Test update 1",
+  "createdAt": {
+    "$date": "2024-05-03T00:19:16.813Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-03T00:22:18.306Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66391b00f2b81e21bd08a07b"
+  },
+  "title": "test",
+  "createdAt": {
+    "$date": "2024-05-06T18:01:36.393Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-06T18:01:36.393Z"
+  },
+  "__v": 0
+}]

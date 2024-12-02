@@ -1,0 +1,68 @@
+[{
+  "_id": {
+    "$oid": "664421aa8a268d8c8dcbe840"
+  },
+  "name": "MAGIAMGIA1UPDATE",
+  "discount": 10,
+  "expiry": {
+    "$date": "2024-05-16T00:00:00.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-05-15T02:44:58.670Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-15T03:06:36.661Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664422118a268d8c8dcbe843"
+  },
+  "name": "MAGIAMGIA2",
+  "discount": 15,
+  "expiry": {
+    "$date": "2024-05-16T00:00:00.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-05-15T02:46:41.559Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-15T02:46:41.559Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664422358a268d8c8dcbe846"
+  },
+  "name": "MAGIAMGIA3",
+  "discount": 20,
+  "expiry": {
+    "$date": "2024-05-20T00:00:00.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-05-15T02:47:17.486Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-15T02:47:17.486Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66442748df9a8b8f9d2d57a8"
+  },
+  "name": "TESTDELETE",
+  "discount": 20,
+  "expiry": {
+    "$date": "2024-05-20T00:00:00.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-05-15T03:08:56.539Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-15T03:08:56.539Z"
+  },
+  "__v": 0
+}]

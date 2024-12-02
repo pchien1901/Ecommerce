@@ -1,0 +1,138 @@
+[{
+  "_id": {
+    "$oid": "671d0e06794b89c797723e6e"
+  },
+  "product": {
+    "$oid": "671d0d3d487b4c151c21f141"
+  },
+  "startTime": {
+    "$date": "2024-10-26T15:43:02.193Z"
+  },
+  "endTime": {
+    "$date": "2024-10-26T17:43:02.193Z"
+  },
+  "coupon": null,
+  "isRandom": true,
+  "createdAt": {
+    "$date": "2024-10-26T15:43:02.326Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-26T15:43:02.326Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "671dfc556fd7330a977a27c4"
+  },
+  "product": {
+    "$oid": "671df7c7f25e97bcf4c0e61a"
+  },
+  "startTime": {
+    "$date": "2024-10-27T08:39:49.656Z"
+  },
+  "endTime": {
+    "$date": "2024-10-27T10:39:49.656Z"
+  },
+  "coupon": null,
+  "isRandom": true,
+  "createdAt": {
+    "$date": "2024-10-27T08:39:49.904Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-27T08:39:49.904Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "671e5aace9fd6324705526e7"
+  },
+  "product": {
+    "$oid": "671df7c8f25e97bcf4c0e6aa"
+  },
+  "startTime": {
+    "$date": "2024-10-27T15:22:20.700Z"
+  },
+  "endTime": {
+    "$date": "2024-10-27T17:22:20.700Z"
+  },
+  "coupon": null,
+  "isRandom": true,
+  "createdAt": {
+    "$date": "2024-10-27T15:22:20.816Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-27T15:22:20.816Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "671fa2f5d04869a889092ad5"
+  },
+  "product": {
+    "$oid": "671df7c7f25e97bcf4c0e5e4"
+  },
+  "startTime": {
+    "$date": "2024-10-28T14:42:53.253Z"
+  },
+  "endTime": {
+    "$date": "2024-10-28T16:42:53.253Z"
+  },
+  "coupon": null,
+  "isRandom": true,
+  "createdAt": {
+    "$date": "2024-10-28T14:43:01.884Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-28T14:43:01.884Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6720c926fa22160fc938331a"
+  },
+  "product": {
+    "$oid": "671df7c8f25e97bcf4c0e6c0"
+  },
+  "startTime": {
+    "$date": "2024-10-29T11:38:13.642Z"
+  },
+  "endTime": {
+    "$date": "2024-10-29T13:38:13.642Z"
+  },
+  "coupon": null,
+  "isRandom": true,
+  "createdAt": {
+    "$date": "2024-10-29T11:38:14.218Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-29T11:38:14.218Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6720e54efa22160fc938340c"
+  },
+  "product": {
+    "$oid": "671df7c7f25e97bcf4c0e576"
+  },
+  "startTime": {
+    "$date": "2024-10-29T13:38:22.794Z"
+  },
+  "endTime": {
+    "$date": "2024-10-29T15:38:22.794Z"
+  },
+  "coupon": null,
+  "isRandom": true,
+  "createdAt": {
+    "$date": "2024-10-29T13:38:22.834Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-29T13:38:22.834Z"
+  },
+  "__v": 0
+}]
